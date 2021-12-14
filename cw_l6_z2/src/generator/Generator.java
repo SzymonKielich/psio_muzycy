@@ -61,8 +61,8 @@ public class Generator {
 
 		
 		
-		Generator_sendBrief(wokalista, pianista, technik, saksofonista);
-//		Zespol.optimalTeam(technicy, muzycy, 1500);
+//		Generator_sendBrief(wokalista, pianista, technik, saksofonista);
+		Zespol.Zespol_optimalTeam(technicy, muzycy, 1500);
 
 		
 //		System.out.println("-----------------");
