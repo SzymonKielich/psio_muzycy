@@ -4,8 +4,6 @@ import sprzet.Mikrofon;
 
 public class Wokalista extends Muzyk {
 	
-	private static final long serialVersionUID = 2861962873409064960L;
-	
 	private String skalaPoczatek;
 	private String skalaKoniec;
 	
@@ -20,17 +18,17 @@ public class Wokalista extends Muzyk {
 		
 	}
 	//metoda przyslonieta z klasy muzyk
-	public void Muzyk_play(Wokalista wokalista) {
+	public void play(Wokalista wokalista) {
 		
 		System.out.print("Odtwarzam demo wokalisty: " + wokalista.getImie() + " " + wokalista.getNazwisko());
 		System.out.println(": oOooooOo lalala!!");
 	}
 	
-	public void Wokalista_wybierzMikrofon(String marka, String model, boolean CzyDynamiczny) {
+	public void wybierzMikrofon(String marka, String model, boolean CzyDynamiczny) {
 		this.mikro = new Mikrofon(marka, model, CzyDynamiczny);
 	}
 	
-	public void Wokalista_wyswietlUlubionyMikrofon() {
+	public void wyswietlUlubionyMikrofon() {
 		
 		System.out.print(mikro.getMarka() + " " + mikro.getModel() + ". ");
 		
@@ -40,8 +38,6 @@ public class Wokalista extends Muzyk {
 			System.out.println("Nie jest on dynamiczny.");
 		
 	}
-
-	// GETTERS & SETTERS
 	
 	public void setMikrofon(Mikrofon m) {
 		this.mikro = m;

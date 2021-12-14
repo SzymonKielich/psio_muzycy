@@ -9,7 +9,7 @@ public class Saksofonista extends Muzyk
     private Saksofon saksofon = null;
 
 
-    public Saksofonista(String imie, String nazwisko, int poziomUmiejetnosci, int stawka, boolean czySiedzi, Piosenka[] tab) {
+    public Saksofonista(String imie, String nazwisko, int poziomUmiejetnosci, int stawka, boolean czySiedzi, Piosenka[]tab) {
 
         super(imie, nazwisko,poziomUmiejetnosci, stawka,tab);
 
@@ -18,8 +18,6 @@ public class Saksofonista extends Muzyk
 
 
     }
-
-    // GETTERS & SETTERS
 
     public boolean isCzySiedzi() {
         return czySiedzi;

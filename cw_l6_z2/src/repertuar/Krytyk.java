@@ -6,13 +6,15 @@ import muzycy.Muzyk;
 public class Krytyk extends Osoba{
 
 
-	public Krytyk(String imie, String nazwisko) {
-		super(imie, nazwisko);
+	public Krytyk(String imie, String nazwisko, int stawka) {
+		super(imie, nazwisko, stawka);
+		
+		
 
 		
 	}
 
-	public static void Krytyk_ocenaUmiejetnosci(Muzyk[] tab) //ocena umiejetnosci danego muzyka na podstawie tego jak wypada na tle calej reszty
+	public static void ocenaUmiejetnosci(Muzyk[] tab) //ocena umiejetnosci danego muzyka na podstawie tego jak wypada na tle calej reszty
 	{
 		double sredniaLiczba=0,procent;
 		int i,dodatkowePkt;

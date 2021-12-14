@@ -3,31 +3,33 @@ package technika;
 import muzycy.Osoba;
 import rider.Rider;
 
+package technika;
+
+import muzycy.Osoba;
+import rider.Rider;
+
 public class Technik extends Osoba{
 	
 	private int stawka;
-	private int poziomUmiejetnosci;
-	private String preferowanyStol;
+	private int poziom_umiejetnosci;
+	private String preferowany_stol;
 	Rider rider;
 	
 	
-	public Technik(String imie, String nazwisko, int stawka, int poziomUmiejetnosci, String preferowanyStol, Rider rider){
+	public Technik(String imie, String nazwisko, int stawka, int poziom_umiejetnosci, String preferowany_stol, Rider rider){
 		
-		super(imie, nazwisko);
-		this.stawka = stawka;
-		this.poziomUmiejetnosci = poziomUmiejetnosci;
-		this.preferowanyStol = preferowanyStol;
+		super(imie, nazwisko, stawka);
+
+		this.poziom_umiejetnosci = poziom_umiejetnosci;
+		this.preferowany_stol = preferowany_stol;
 		this.rider = rider;
 		
 		
 		
 	}
 
-	// GETTERS & SETTERS
 
-	public int getStawka() {
-		return stawka;
-	}
+
 
 
 	public void setStawka(int stawka) {
@@ -35,23 +37,23 @@ public class Technik extends Osoba{
 	}
 
 
-	public int getPoziomUmiejetnosci() {
-		return poziomUmiejetnosci;
+	public int getPoziom_umiejetnosci() {
+		return poziom_umiejetnosci;
 	}
 
 
-	public void setPoziomUmiejetnosci(int poziomUmiejetnosci) {
-		this.poziomUmiejetnosci = poziomUmiejetnosci;
+	public void setPoziom_umiejetnosci(int poziom_umiejetnosci) {
+		this.poziom_umiejetnosci = poziom_umiejetnosci;
 	}
 
 
-	public String getPreferowanyStol() {
-		return preferowanyStol;
+	public String getPreferowany_stol() {
+		return preferowany_stol;
 	}
 
 
-	public void setPreferowanyStol(String preferowanStol) {
-		this.preferowanyStol = preferowanStol;
+	public void setPreferowany_stol(String preferowany_stol) {
+		this.preferowany_stol = preferowany_stol;
 	}
 
 
