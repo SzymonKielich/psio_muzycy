@@ -77,7 +77,6 @@ public class TextIO {
     	
     	File file = new File(filename);
     	Object[] muzycy;
-    	
     	FileInputStream fileIn = new FileInputStream(file.getAbsolutePath());
     	ObjectInputStream objectIn = new ObjectInputStream(fileIn);
     	muzycy = (Object[]) objectIn.readObject();

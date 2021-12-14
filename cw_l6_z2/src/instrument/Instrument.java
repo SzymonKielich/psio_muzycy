@@ -3,16 +3,19 @@ package instrument;
 import java.io.Serializable;
 
 public abstract class Instrument implements Serializable{
+	
+	private static final long serialVersionUID = -7995967695934150101L;
+	
     private String producent;
     private int cena;
-    private int rokRrodukcji;
+    private int rokProdukcji;
 
 
     public Instrument(String producent, int cena, int rok_produkcji)
     {
         this.producent = producent;
         this.cena = cena;
-        this.rokRrodukcji = rok_produkcji;
+        this.rokProdukcji = rok_produkcji;
     }
 
     // GETTERS & SETTERS
@@ -34,11 +37,11 @@ public abstract class Instrument implements Serializable{
     }
 
     public int getRokProdukcji() {
-        return rokRrodukcji;
+        return rokProdukcji;
     }
 
     public void setRokProdukcji(int rok_produkcji) {
-        this.rokRrodukcji = rok_produkcji;
+        this.rokProdukcji = rok_produkcji;
     }
 
     /*public void playAnInstrument(Instrument instrument)

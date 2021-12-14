@@ -7,7 +7,7 @@ public class Technik extends Osoba{
 	
 	private int stawka;
 	private int poziomUmiejetnosci;
-	private String preferowanStol;
+	private String preferowanyStol;
 	Rider rider;
 	
 	
@@ -16,7 +16,7 @@ public class Technik extends Osoba{
 		super(imie, nazwisko);
 		this.stawka = stawka;
 		this.poziomUmiejetnosci = poziomUmiejetnosci;
-		this.preferowanStol = preferowanyStol;
+		this.preferowanyStol = preferowanyStol;
 		this.rider = rider;
 		
 		
@@ -45,13 +45,13 @@ public class Technik extends Osoba{
 	}
 
 
-	public String getPreferowanStol() {
-		return preferowanStol;
+	public String getPreferowanyStol() {
+		return preferowanyStol;
 	}
 
 
-	public void setPreferowanStol(String preferowanStol) {
-		this.preferowanStol = preferowanStol;
+	public void setPreferowanyStol(String preferowanStol) {
+		this.preferowanyStol = preferowanStol;
 	}
 
 

@@ -2,6 +2,9 @@ package instrument;
 
 public class Keyboard extends Instrument
 {
+	
+	private static final long serialVersionUID = 3778153046102205483L;
+	
     private String klasa; // profesjonalna, srednia
     private String rodzajKlawiatury; // wazona, dowazana, syntezatorowa, pelna, mloteczkowa
     private String elementyDodatkowe; // sekwencer, glosniki, pulpit pod nuty, zasilacz sieciowy
@@ -44,7 +47,7 @@ public class Keyboard extends Instrument
     public String getStringKeyboard()
     {
         return  "\tProducent: "+getProducent()+"\tCena: "+getCena()+"\tRok produkcji: "
-                +getRok_produkcji()+"\tKlasa: "+getKlasa()+"\tRodzaj klawiatury: "
+                +getRokProdukcji()+"\tKlasa: "+getKlasa()+"\tRodzaj klawiatury: "
                 + getRodzajKlawiatury()+"\tElementy dodatkowe: "+ getElementyDodatkowe();
     }
 }

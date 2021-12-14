@@ -1,6 +1,9 @@
 package instrument;
 
 public class Saksofon extends Instrument {
+	
+	private static final long serialVersionUID = -3391940550943806736L;
+	
 
     private String rodzaj; // sopranowy, altowy, tenorowy, barytonowy
     private String strojMuzyczny; // B, Es

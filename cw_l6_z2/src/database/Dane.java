@@ -229,7 +229,7 @@ public class Dane {
 			
 			if((Generator.getMuzycy()[i]) instanceof Wokalista) {
 				
-				Mikrofon mikrofon = Generator.Gererator_generateMikrofon();
+				Mikrofon mikrofon = Generator.Generator_generateMikrofon();
 				
 				((Wokalista)(Generator.getMuzycy()[i])).setMikrofon(mikrofon);
 			}

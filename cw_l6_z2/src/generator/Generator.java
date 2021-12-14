@@ -36,7 +36,7 @@ public class Generator {
 
 
 		TextIO.TextIO_pobierzDane();
-		Dane.Dane_initializeDatabase();
+		Dane.Dane_InitializeDatabase();
 
 		
 		podstawowy = Dane.getPodstawowy();

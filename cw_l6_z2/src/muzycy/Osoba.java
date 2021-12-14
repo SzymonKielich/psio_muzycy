@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 abstract public class Osoba implements Serializable{
 
+	private static final long serialVersionUID = 2873201217106375308L;
+
+	
 	private String imie;
 	private String nazwisko;
 	

@@ -66,7 +66,7 @@ public class Zespol {
                     for (int l=0; l<saksofonisci.size(); l++)
                     {
                         boolean czyWBudzecie = ( technicy.get(i).getStawka() + wokalisci.get(j).getStawka() + pianisci.get(k).getStawka() + saksofonisci.get(l).getStawka() <= budzet );
-                        int tempSuma = technicy.get(i).getPoziom_umiejetnosci() + wokalisci.get(j).getPoziomUmiejetnosci() + pianisci.get(k).getPoziomUmiejetnosci() + saksofonisci.get(l).getPoziomUmiejetnosci();
+                        int tempSuma = technicy.get(i).getPoziomUmiejetnosci() + wokalisci.get(j).getPoziomUmiejetnosci() + pianisci.get(k).getPoziomUmiejetnosci() + saksofonisci.get(l).getPoziomUmiejetnosci();
                         boolean czyWiekszeUmiejetnosci = ( tempSuma > suma );
 
                         if ( czyWBudzecie && czyWiekszeUmiejetnosci )
@@ -137,7 +137,7 @@ public class Zespol {
         else {
         	System.out.println("\n-------------------------");
         	System.out.println("\nNajbardziej optymalny zespol pod wzgledem ceny oraz poziomu umiejetnosci w stosunku do budzetu wynoszacego: "+budzet);
-        	Generator.sendBrief(zespol.getWokalista(), zespol.getPianista(), zespol.getTechnik(), zespol.getSaksofonista());
+        	Generator.Generator_sendBrief(zespol.getWokalista(), zespol.getPianista(), zespol.getTechnik(), zespol.getSaksofonista());
    	
         }
 	

@@ -5,7 +5,9 @@ import java.io.Serializable;
 import repertuar.Piosenka;
 
 public abstract class Muzyk extends Osoba implements Serializable{
-
+	
+	private static final long serialVersionUID = 3572058128844367314L;
+	
 	private int poziomUmiejetnosci;
 	private int stawka;
 	private Piosenka[] repertuar ;

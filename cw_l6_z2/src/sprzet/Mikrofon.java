@@ -3,6 +3,9 @@ package sprzet;
 import java.io.Serializable;
 
 public class Mikrofon implements Serializable{
+	
+	private static final long serialVersionUID = 2801013545969244616L;
+	
 	private String marka;
 	private String model;
 	private boolean czyDynamiczny;
