@@ -35,8 +35,8 @@ public class Generator {
 	public static void main (String [] args) throws ClassNotFoundException, IOException {
 
 
-		TextIO.pobierzDane();
-		Dane.initializeDatabase();
+		TextIO.TextIO_pobierzDane();
+		Dane.Dane_initializeDatabase();
 
 		
 		podstawowy = Dane.getPodstawowy();
@@ -54,14 +54,14 @@ public class Generator {
 		
 
 		
-		Wokalista wokalista = (Wokalista)generateMuzyk("class muzycy.Wokalista");
-		Pianista pianista = (Pianista)generateMuzyk("class muzycy.Pianista");
-		Saksofonista saksofonista = (Saksofonista)generateMuzyk("class muzycy.Saksofonista");
-		Technik technik = generateTechnik(wokalista, pianista, saksofonista);
+		Wokalista wokalista = (Wokalista) Generator_generateMuzyk("class muzycy.Wokalista");
+		Pianista pianista = (Pianista) Generator_generateMuzyk("class muzycy.Pianista");
+		Saksofonista saksofonista = (Saksofonista) Generator_generateMuzyk("class muzycy.Saksofonista");
+		Technik technik = Generator_generateTechnik(wokalista, pianista, saksofonista);
 
 		
 		
-		sendBrief(wokalista, pianista, technik, saksofonista);			
+		Generator_sendBrief(wokalista, pianista, technik, saksofonista);
 //		Zespol.optimalTeam(technicy, muzycy, 1500);
 
 		
@@ -72,18 +72,18 @@ public class Generator {
 		
 		
 		
-		TextIO.zapiszDane();
+		TextIO.TextIO_zapiszDane();
 	}
 	
 	
 	//generowanie propozycji koncertu
-	public static void sendBrief(Wokalista wokalista, Pianista pianista, Technik technik, Saksofonista saksofonista) {
+	public static void Generator_sendBrief(Wokalista wokalista, Pianista pianista, Technik technik, Saksofonista saksofonista) {
 		
 		Rider rider = technik.getRider();
 		
 		System.out.println("Brief koncertu " + wokalista.getImie() + " " + wokalista.getNazwisko() + " przy akompaniamencie " + pianista.getImie() + " " + pianista.getNazwisko()+", "+saksofonista.getImie()+" "+saksofonista.getNazwisko());
 		System.out.println("--------------------------------");
-		System.out.println("\u001B[31m" +"Stawka zespolu: " + seePrice(wokalista, pianista, saksofonista) + " zl"+ "\u001B[0m");
+		System.out.println("\u001B[31m" +"Stawka zespolu: " + Generator_seePrice(wokalista, pianista, saksofonista) + " zl"+ "\u001B[0m");
 		System.out.println("Umiejetnosci sumaryczne zespolu w skali 0-15: " + (wokalista.getPoziomUmiejetnosci()+pianista.getPoziomUmiejetnosci()+saksofonista.getPoziomUmiejetnosci()));
 		System.out.println("W tym klawiszowiec: " + pianista.getPoziomUmiejetnosci() + "/5 Saksofonista: " + saksofonista.getPoziomUmiejetnosci() + "/5 Wokalista: " + wokalista.getPoziomUmiejetnosci() + "/5");
 		System.out.println("Instrument klawiszowca: " + pianista.getStringKeyboard());
@@ -93,20 +93,20 @@ public class Generator {
 		System.out.println("--------------------------------");
 		System.out.println("Szczegoly dotyczace rideru:");
 		System.out.print("Mikrofon wokalistki: "); 
-		wokalista.wyswietlUlubionyMikrofon();
+		wokalista.Wokalista_wyswietlUlubionyMikrofon();
 		System.out.println("Przekaski: " + rider.getPrzekaski());
 		System.out.println("W przypadku wyjazdu, minimalny standard hotelu: " + rider.getHotel());
 		System.out.println("Minimalne wymiary sceny: " + rider.getStageSize());
 		System.out.println("Czy potrzebni handzi? " + rider.isHandsNeeded());
 		System.out.println("Technik: " + technik.getImie() + " " + technik.getNazwisko());
-		System.out.println("Poziom umiejetnosci technika: " + technik.getPoziom_umiejetnosci() + "/5");
-		System.out.println("Preferowany stol: " + technik.getPreferowany_stol());
+		System.out.println("Poziom umiejetnosci technika: " + technik.getPoziomUmiejetnosci() + "/5");
+		System.out.println("Preferowany stol: " + technik.getPreferowanyStol());
 		System.out.println("Stawka technika: " + technik.getStawka() + " zl");
 		System.out.println("--------------------------------");
-		System.out.println("\u001B[31m" + "Koszt zespolu: " + (seePrice(wokalista, pianista, saksofonista) + technik.getStawka()) + " zl" + "\u001B[0m");
+		System.out.println("\u001B[31m" + "Koszt zespolu: " + (Generator_seePrice(wokalista, pianista, saksofonista) + technik.getStawka()) + " zl" + "\u001B[0m");
 		System.out.println("--------------------------------");
 		System.out.println("Repertuar:");
-		wydrukujRepertuar(wokalista, pianista, saksofonista);
+		Generator_wydrukujRepertuar(wokalista, pianista, saksofonista);
 		
 
 
@@ -115,7 +115,7 @@ public class Generator {
 	}
 	
 	//wydrukuj liste zawierajaca utwory wszystkich muzyków, bez powtórzeń
-	public static void wydrukujRepertuar(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
+	public static void Generator_wydrukujRepertuar(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
 		
 		ArrayList<Piosenka> repertuar = new ArrayList<Piosenka>();
 		
@@ -154,7 +154,7 @@ public class Generator {
 	
 	
 	//metoda zwracajaca cene wystepu wokalisty i pianisty przeslanego jako parametr
-	public static int seePrice(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
+	public static int Generator_seePrice(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
 
 		int price = wokalista.getStawka() + pianista.getStawka() + saksofonista.getStawka();
 
@@ -164,9 +164,9 @@ public class Generator {
 	
 	
 	//przydzielenie technika w zależności od budżetu
-	public static Technik generateTechnik(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
+	public static Technik Generator_generateTechnik(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
 		
-		int price = seePrice(wokalista, pianista, saksofonista);
+		int price = Generator_seePrice(wokalista, pianista, saksofonista);
 		
 		if(price < 1800) {
 			return technicy[0];
@@ -181,7 +181,7 @@ public class Generator {
 	}
 	
 	//zastepuje metody generateWokaliska, generatePianista, generateSaksofonista
-	public static Muzyk generateMuzyk(String jakiMuzyk) //format wprowadzania: "class packageName.className" na przyklad "class muzycy.Pianista"
+	public static Muzyk Generator_generateMuzyk(String jakiMuzyk) //format wprowadzania: "class packageName.className" na przyklad "class muzycy.Pianista"
 	{
 		Random generator = new Random();
 		int randomNumber;
@@ -261,7 +261,7 @@ public class Generator {
 	} */
 
 	//zastepuje generateKeyboard i generateSaksofon
-	public static Instrument generateInstrument(String jakiInstrument) //format wprowadzania: "class packageName.className" na przyklad "class instrument.Keyboard"
+	public static Instrument Generator_generateInstrument(String jakiInstrument) //format wprowadzania: "class packageName.className" na przyklad "class instrument.Keyboard"
 	{
 		Random generator = new Random();
 		int randomNumber;
@@ -318,7 +318,7 @@ public class Generator {
 	} */
 	
 	//generowanie losowego mikrofonu
-	public static Mikrofon generateMikrofon() {
+	public static Mikrofon Generator_generateMikrofon() {
 
 		Random generator = new Random();
 		Mikrofon mikrofon;
@@ -338,11 +338,11 @@ public class Generator {
 	}
 	
 	//generowanie przypadkowego trio i wydrukowanie imienia i nazwiska, metoda nieużywana
-	public static void generateTrio() {
+	public static void Generator_generateTrio() {
 		
-		Wokalista wokalista = (Wokalista)generateMuzyk("class muzycy.Wokalista");
-		Pianista pianista = (Pianista)generateMuzyk("class muzycy.Pianista");
-		Saksofonista saksofonista = (Saksofonista)generateMuzyk("class muzycy.Saksofonista");
+		Wokalista wokalista = (Wokalista) Generator_generateMuzyk("class muzycy.Wokalista");
+		Pianista pianista = (Pianista) Generator_generateMuzyk("class muzycy.Pianista");
+		Saksofonista saksofonista = (Saksofonista) Generator_generateMuzyk("class muzycy.Saksofonista");
 		
 		System.out.println("Wygenerowano trio:");
 		System.out.println("Pianista: " + pianista.getImie() + " " + pianista.getNazwisko());

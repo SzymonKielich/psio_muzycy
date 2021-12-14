@@ -18,17 +18,17 @@ public class Wokalista extends Muzyk {
 		
 	}
 	//metoda przyslonieta z klasy muzyk
-	public void play(Wokalista wokalista) {
+	public void Muzyk_play(Wokalista wokalista) {
 		
 		System.out.print("Odtwarzam demo wokalisty: " + wokalista.getImie() + " " + wokalista.getNazwisko());
 		System.out.println(": oOooooOo lalala!!");
 	}
 	
-	public void wybierzMikrofon(String marka, String model, boolean CzyDynamiczny) {
+	public void Wokalista_wybierzMikrofon(String marka, String model, boolean CzyDynamiczny) {
 		this.mikro = new Mikrofon(marka, model, CzyDynamiczny);
 	}
 	
-	public void wyswietlUlubionyMikrofon() {
+	public void Wokalista_wyswietlUlubionyMikrofon() {
 		
 		System.out.print(mikro.getMarka() + " " + mikro.getModel() + ". ");
 		
@@ -38,6 +38,8 @@ public class Wokalista extends Muzyk {
 			System.out.println("Nie jest on dynamiczny.");
 		
 	}
+
+	// GETTERS & SETTERS
 	
 	public void setMikrofon(Mikrofon m) {
 		this.mikro = m;

@@ -19,7 +19,7 @@ abstract public class Osoba implements Serializable{
 
 
 
-
+// GETTERS & SETTERS
 
 	public String getImie() {
 		return imie;

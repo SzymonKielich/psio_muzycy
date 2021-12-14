@@ -23,11 +23,12 @@ public class Pianista extends Muzyk{
 		this.czySpiewa = czySpiewa;
 	}
 	//metoda przyslonieta z klasy muzyk
-	public void play(Pianista pianista) {
+	public void Muzyk_play(Pianista pianista) {
 		
 		System.out.println("Odtwarzam demo pianisty: " + pianista.getImie() + " " + pianista.getNazwisko());
 	}
 
+	// GETTERS & SETTERS
 
 	public String getRodzajStatywu() {
 		return rodzajStatywu;

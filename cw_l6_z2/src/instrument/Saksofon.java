@@ -2,23 +2,25 @@ package instrument;
 
 public class Saksofon extends Instrument {
 
-    private String rodzaj; // sporanowy, altowy, tenorowy, barytonowy
-    private String stroj_muzyczny; // B, Es
+    private String rodzaj; // sopranowy, altowy, tenorowy, barytonowy
+    private String strojMuzyczny; // B, Es
 
-    public Saksofon(String producent, int cena, int rok_produkcji, String rodzaj, String stroj_muzyczny)
+    public Saksofon(String producent, int cena, int rokProdukcji, String rodzaj, String strojMuzyczny)
     {
-        super(producent, cena, rok_produkcji);
+        super(producent, cena, rokProdukcji);
 
         this.rodzaj = rodzaj;
-        this.stroj_muzyczny = stroj_muzyczny;
+        this.strojMuzyczny = strojMuzyczny;
     }
 
-    public String getStroj_muzyczny() {
-        return stroj_muzyczny;
+    // GETTERS & SETTERS
+
+    public String getStrojMuzyczny() {
+        return strojMuzyczny;
     }
 
-    public void setStroj_muzyczny(String stroj_muzyczny) {
-        this.stroj_muzyczny = stroj_muzyczny;
+    public void setStrojMuzyczny(String strojMuzyczny) {
+        this.strojMuzyczny = strojMuzyczny;
     }
 
     public String getRodzaj() {
@@ -31,8 +33,8 @@ public class Saksofon extends Instrument {
 
     public String getStringSaksofon()
     {
-        return "Producent: "+getProducent()+"\tCena: "+getCena()+"\tRok produkcji: "+getRok_produkcji()
-                +"\tRodzaj: "+getRodzaj()+"\tStrój muzyczny: "+getStroj_muzyczny();
+        return "Producent: "+getProducent()+"\tCena: "+getCena()+"\tRok produkcji: "+getRokProdukcji()
+                +"\tRodzaj: "+getRodzaj()+"\tStrój muzyczny: "+ getStrojMuzyczny();
     }
 
 

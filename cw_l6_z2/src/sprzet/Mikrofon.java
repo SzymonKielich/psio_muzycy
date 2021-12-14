@@ -5,18 +5,18 @@ import java.io.Serializable;
 public class Mikrofon implements Serializable{
 	private String marka;
 	private String model;
-	private boolean CzyDynamiczny;
+	private boolean czyDynamiczny;
 	
 	public Mikrofon() {
 		marka = "Shure";
 		model = "SM58-LCE";
-		CzyDynamiczny = true;
+		czyDynamiczny = true;
 	}
 	
 	public Mikrofon(String marka, String model, boolean CzyDynamiczny) {
 		this.marka = marka;
 		this.model = model;
-		this.CzyDynamiczny = CzyDynamiczny;
+		this.czyDynamiczny = CzyDynamiczny;
 	}
 	
 
@@ -37,11 +37,11 @@ public class Mikrofon implements Serializable{
 	}
 
 	public boolean getCzyDynamiczny() {
-		return CzyDynamiczny;
+		return czyDynamiczny;
 	}
 
 	public void setCzyDynamiczny(boolean czyDynamiczny) {
-		CzyDynamiczny = czyDynamiczny;
+		this.czyDynamiczny = czyDynamiczny;
 	}
 	
 }

@@ -43,20 +43,20 @@ public class Zespol {
     }
 	
 	
-	public static void optimalTeam(Technik [] technicytmp , Muzyk [] muzycy, int budzet) {
+	public static void Zespol_optimalTeam(Technik [] technicytmp , Muzyk [] muzycy, int budzet) {
 		
 		List <Technik> technicy = Arrays.asList(technicytmp);
         List <Wokalista> wokalisci = arrayWokalisci(muzycy);
         List <Pianista> pianisci = arrayPianisci(muzycy);
         List <Saksofonista> saksofonisci  = arraySaksofonisci(muzycy);
-        Zespol zespol = wybierzZespol( technicy , wokalisci , pianisci , saksofonisci , budzet );
+        Zespol zespol = Zespol_wybierzZespol( technicy , wokalisci , pianisci , saksofonisci , budzet );
         
-        showOptimalTeam(zespol,budzet);
+        Zespol_showOptimalTeam(zespol,budzet);
 		
 
 	}
 	
-	public static Zespol wybierzZespol( List <Technik> technicy , List <Wokalista> wokalisci , List <Pianista> pianisci , List <Saksofonista> saksofonisci , int budzet )
+	public static Zespol Zespol_wybierzZespol(List <Technik> technicy , List <Wokalista> wokalisci , List <Pianista> pianisci , List <Saksofonista> saksofonisci , int budzet )
     {
         int iT=0, iW=0, iP=0, iS=0, suma=0;
        
@@ -129,7 +129,7 @@ public class Zespol {
     	return wokalisci;
     }
 	
-	public static void showOptimalTeam(Zespol zespol, int budzet) {
+	public static void Zespol_showOptimalTeam(Zespol zespol, int budzet) {
 		
 		if ( zespol == null )
             System.out.println( "Z danej grupy nie mozna utworzyc zespolu w twoim budzecie!" );

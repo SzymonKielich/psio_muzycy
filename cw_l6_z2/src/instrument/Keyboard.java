@@ -3,17 +3,19 @@ package instrument;
 public class Keyboard extends Instrument
 {
     private String klasa; // profesjonalna, srednia
-    private String rodzaj_klawiatury; // wazona, dowazana, syntezatorowa, pelna, mloteczkowa
-    private String elementy_dodatkowe; // sekwencer, glosniki, pulpit pod nuty, zasilacz sieciowy
+    private String rodzajKlawiatury; // wazona, dowazana, syntezatorowa, pelna, mloteczkowa
+    private String elementyDodatkowe; // sekwencer, glosniki, pulpit pod nuty, zasilacz sieciowy
 
-    public Keyboard(String producent, int cena, int rok_produkcji, String klasa, String rodzaj_klawiatury, String elementy_dodatkowe)
+    public Keyboard(String producent, int cena, int rokProdukcji, String klasa, String rodzajKlawiatury, String elementyDodatkowe)
     {
-        super(producent, cena, rok_produkcji);
+        super(producent, cena, rokProdukcji);
 
         this.klasa = klasa;
-        this.rodzaj_klawiatury = rodzaj_klawiatury;
-        this.elementy_dodatkowe = elementy_dodatkowe;
+        this.rodzajKlawiatury = rodzajKlawiatury;
+        this.elementyDodatkowe = elementyDodatkowe;
     }
+
+    // GETTERS & SETTERS
 
     public String getKlasa() {
         return klasa;
@@ -23,26 +25,26 @@ public class Keyboard extends Instrument
         this.klasa = klasa;
     }
 
-    public String getRodzaj_klawiatury() {
-        return rodzaj_klawiatury;
+    public String getRodzajKlawiatury() {
+        return rodzajKlawiatury;
     }
 
-    public void setRodzaj_klawiatury(String rodzaj_klawiatury) {
-        this.rodzaj_klawiatury = rodzaj_klawiatury;
+    public void setRodzajKlawiatury(String rodzajKlawiatury) {
+        this.rodzajKlawiatury = rodzajKlawiatury;
     }
 
-    public String getElementy_dodatkowe() {
-        return elementy_dodatkowe;
+    public String getElementyDodatkowe() {
+        return elementyDodatkowe;
     }
 
-    public void setElementy_dodatkowe(String elementy_dodatkowe) {
-        this.elementy_dodatkowe = elementy_dodatkowe;
+    public void setElementyDodatkowe(String elementyDodatkowe) {
+        this.elementyDodatkowe = elementyDodatkowe;
     }
 
     public String getStringKeyboard()
     {
         return  "\tProducent: "+getProducent()+"\tCena: "+getCena()+"\tRok produkcji: "
                 +getRok_produkcji()+"\tKlasa: "+getKlasa()+"\tRodzaj klawiatury: "
-                +getRodzaj_klawiatury()+"\tElementy dodatkowe: "+getElementy_dodatkowe();
+                + getRodzajKlawiatury()+"\tElementy dodatkowe: "+ getElementyDodatkowe();
     }
 }

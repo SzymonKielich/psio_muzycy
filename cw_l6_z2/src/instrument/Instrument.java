@@ -5,15 +5,17 @@ import java.io.Serializable;
 public abstract class Instrument implements Serializable{
     private String producent;
     private int cena;
-    private int rok_produkcji;
+    private int rokRrodukcji;
 
 
     public Instrument(String producent, int cena, int rok_produkcji)
     {
         this.producent = producent;
         this.cena = cena;
-        this.rok_produkcji = rok_produkcji;
+        this.rokRrodukcji = rok_produkcji;
     }
+
+    // GETTERS & SETTERS
 
     public String getProducent() {
         return producent;
@@ -31,12 +33,12 @@ public abstract class Instrument implements Serializable{
         this.cena = cena;
     }
 
-    public int getRok_produkcji() {
-        return rok_produkcji;
+    public int getRokProdukcji() {
+        return rokRrodukcji;
     }
 
-    public void setRok_produkcji(int rok_produkcji) {
-        this.rok_produkcji = rok_produkcji;
+    public void setRokProdukcji(int rok_produkcji) {
+        this.rokRrodukcji = rok_produkcji;
     }
 
     /*public void playAnInstrument(Instrument instrument)

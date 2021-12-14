@@ -20,7 +20,7 @@ public class Rider {
 	}
 	
 	//drukowanie konkretnego rideru
-	public void drukuj(Rider rider) {
+	public void Rider_drukuj(Rider rider) {
 		
 		
 		System.out.println("Rider:");
@@ -32,11 +32,9 @@ public class Rider {
 		
 		
 	}
-	
-	
-	
-	
-	
+
+
+	// GETTERS & SETTERS
 	
 
 	public String getPrzekaski() {

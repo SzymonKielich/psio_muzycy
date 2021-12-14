@@ -20,6 +20,8 @@ public class Piosenka implements Serializable{
 		
     	return this.tytul + " , " + this.gatunek + " , Rok wydania: " + this.rokWydania;
     }
+
+    // GETTERS & SETTERS
     
 
     public String getTytul() {

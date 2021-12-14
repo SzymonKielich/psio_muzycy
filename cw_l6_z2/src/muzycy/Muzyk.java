@@ -10,7 +10,7 @@ public abstract class Muzyk extends Osoba implements Serializable{
 	private int stawka;
 	private Piosenka[] repertuar ;
 	
-	public Muzyk(String imie, String nazwisko, int poziomUmiejetnosci, int stawka,Piosenka[] repertuar) {
+	public Muzyk(String imie, String nazwisko, int poziomUmiejetnosci, int stawka, Piosenka[] repertuar) {
 		
 		super(imie, nazwisko);
 
@@ -24,7 +24,7 @@ public abstract class Muzyk extends Osoba implements Serializable{
 	public Muzyk() {
 		
 	}
-	public static void play(Muzyk muzyk) {
+	public static void Muzyk_play(Muzyk muzyk) {
 		
 		System.out.println("Odtwarzam demo muzyka...");
 		
@@ -37,6 +37,7 @@ public abstract class Muzyk extends Osoba implements Serializable{
 		return "Muzyk " + this.getImie() + " " + this.getNazwisko();
 	}
 
+	// GETTERS & SETTERS
 
 	public int getPoziomUmiejetnosci() {
 		return poziomUmiejetnosci;

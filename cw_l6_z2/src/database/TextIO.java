@@ -16,46 +16,46 @@ import sprzet.Mikrofon;
 
 public class TextIO {
 	
-	public static void zresetujDane() {
+	public static void TextIO_zresetujDane() {
 		//metoda przywracajaca dane do poziomu z tablic w dane.java
 		
 		Generator.setMuzycy(Dane.getMuzycy());
 		Generator.setMikrofony(Dane.getMikrofony());
 		Generator.setBaza(Dane.getBaza());
 		Generator.setInstrument(Dane.getInstrument());
-		Dane.przydzielInstrumenty();
-		zapiszDane();
+		Dane.Dane_przydzielInstrumenty();
+		TextIO_zapiszDane();
 		System.out.println("Zresetowano baze danych");
 		
 	}
 	
 	
 	
-	public static void pobierzDane() throws ClassNotFoundException, IOException {
+	public static void TextIO_pobierzDane() throws ClassNotFoundException, IOException {
 		
 		//metoda pobierajaca dane z odpowiednich txt
-		Generator.setMuzycy((Muzyk[]) odczytajZPliku("dbMuzycy.txt"));
-		Generator.setMikrofony((Mikrofon[]) odczytajZPliku("dbMikrofony.txt"));
-		Generator.setBaza((Piosenka[]) odczytajZPliku("dbPiosenka.txt"));
-		Generator.setInstrument((Instrument[]) odczytajZPliku("dbInstrument.txt"));
+		Generator.setMuzycy((Muzyk[]) TextIO_odczytajZPliku("dbMuzycy.txt"));
+		Generator.setMikrofony((Mikrofon[]) TextIO_odczytajZPliku("dbMikrofony.txt"));
+		Generator.setBaza((Piosenka[]) TextIO_odczytajZPliku("dbPiosenka.txt"));
+		Generator.setInstrument((Instrument[]) TextIO_odczytajZPliku("dbInstrument.txt"));
 		
 	}
 	
 	
-	public static void zapiszDane() {
+	public static void TextIO_zapiszDane() {
 		
 		//metoda zapisujaca aktualny stan wszystkich obiektów
 		System.out.println("---------------------");
 		System.out.println("Zapisywanie bazy danych...");
-		zapiszDoPliku(Generator.getMuzycy(), "dbMuzycy.txt");
-		zapiszDoPliku(Generator.getInstrument(), "dbInstrument.txt");
-		zapiszDoPliku(Generator.getMikrofony(), "dbMikrofony.txt");
-		zapiszDoPliku(Generator.getBaza(), "dbPiosenka.txt");
+		TextIO_zapiszDoPliku(Generator.getMuzycy(), "dbMuzycy.txt");
+		TextIO_zapiszDoPliku(Generator.getInstrument(), "dbInstrument.txt");
+		TextIO_zapiszDoPliku(Generator.getMikrofony(), "dbMikrofony.txt");
+		TextIO_zapiszDoPliku(Generator.getBaza(), "dbPiosenka.txt");
 		
 	}
 	
 	
-    public static void zapiszDoPliku(Object[] serObj, String filename) {
+    public static void TextIO_zapiszDoPliku(Object[] serObj, String filename) {
     	 
     	File file = new File(filename);
     	
@@ -73,7 +73,7 @@ public class TextIO {
         }
     }
     
-    public static Object[] odczytajZPliku(String filename) throws ClassNotFoundException, IOException {
+    public static Object[] TextIO_odczytajZPliku(String filename) throws ClassNotFoundException, IOException {
     	
     	File file = new File(filename);
     	Object[] muzycy;
