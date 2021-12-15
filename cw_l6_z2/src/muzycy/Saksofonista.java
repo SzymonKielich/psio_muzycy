@@ -3,18 +3,16 @@ import instrument.Keyboard;
 import instrument.Saksofon;
 import repertuar.Piosenka;
 
-public class Saksofonista extends Muzyk
-{
+public class Saksofonista extends Muzyk {
     private boolean czySiedzi;
     private Saksofon saksofon = null;
 
 
     public Saksofonista(String imie, String nazwisko, int poziomUmiejetnosci, int stawka, boolean czySiedzi, Piosenka[] tab) {
 
-        super(imie, nazwisko,poziomUmiejetnosci, stawka,tab);
+        super(imie, nazwisko, poziomUmiejetnosci, stawka, tab);
 
         this.czySiedzi = czySiedzi;
-
 
 
     }
@@ -29,13 +27,11 @@ public class Saksofonista extends Muzyk
         this.czySiedzi = czySiedzi;
     }
 
-    public String getStringSaksofon()
-    {
+    public String getStringSaksofon() {
         return saksofon.getStringSaksofon();
     }
 
-    public void setSaksofon(Saksofon saksofon)
-    {
+    public void setSaksofon(Saksofon saksofon) {
         this.saksofon = saksofon;
     }
 

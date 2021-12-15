@@ -15,10 +15,10 @@ import repertuar.Piosenka;
 import sprzet.Mikrofon;
 
 public class TextIO {
-	
+
 	public static void TextIO_zresetujDane() {
 		//metoda przywracajaca dane do poziomu z tablic w dane.java
-		
+
 		Generator.setMuzycy(Dane.getMuzycy());
 		Generator.setMikrofony(Dane.getMikrofony());
 		Generator.setBaza(Dane.getBaza());
@@ -26,24 +26,23 @@ public class TextIO {
 		Dane.Dane_przydzielInstrumenty();
 		TextIO_zapiszDane();
 		System.out.println("Zresetowano baze danych");
-		
+
 	}
-	
-	
-	
+
+
 	public static void TextIO_pobierzDane() throws ClassNotFoundException, IOException {
-		
+
 		//metoda pobierajaca dane z odpowiednich txt
 		Generator.setMuzycy((Muzyk[]) TextIO_odczytajZPliku("dbMuzycy.txt"));
 		Generator.setMikrofony((Mikrofon[]) TextIO_odczytajZPliku("dbMikrofony.txt"));
 		Generator.setBaza((Piosenka[]) TextIO_odczytajZPliku("dbPiosenka.txt"));
 		Generator.setInstrument((Instrument[]) TextIO_odczytajZPliku("dbInstrument.txt"));
-		
+
 	}
-	
-	
+
+
 	public static void TextIO_zapiszDane() {
-		
+
 		//metoda zapisujaca aktualny stan wszystkich obiektów
 		System.out.println("---------------------");
 		System.out.println("Zapisywanie bazy danych...");
@@ -51,42 +50,41 @@ public class TextIO {
 		TextIO_zapiszDoPliku(Generator.getInstrument(), "dbInstrument.txt");
 		TextIO_zapiszDoPliku(Generator.getMikrofony(), "dbMikrofony.txt");
 		TextIO_zapiszDoPliku(Generator.getBaza(), "dbPiosenka.txt");
-		
+
 	}
-	
-	
-    public static void TextIO_zapiszDoPliku(Object[] serObj, String filename) {
-    	 
-    	File file = new File(filename);
-    	
-        try {
- 
-            FileOutputStream fileOut = new FileOutputStream(file.getAbsolutePath());
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(serObj);
-            fileOut.close();
-            objectOut.close();
-            System.out.println("Pomyślnie zapisano " + filename);
- 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    public static Object[] TextIO_odczytajZPliku(String filename) throws ClassNotFoundException, IOException {
-    	
-    	File file = new File(filename);
-    	Object[] muzycy;
-    	FileInputStream fileIn = new FileInputStream(file.getAbsolutePath());
-    	ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-    	muzycy = (Object[]) objectIn.readObject();
-    	fileIn.close();
-    	objectIn.close();
-    	return muzycy;
-    }
 
 
-	
+	public static void TextIO_zapiszDoPliku(Object[] serObj, String filename) {
+
+		File file = new File(filename);
+
+		try {
+
+			FileOutputStream fileOut = new FileOutputStream(file.getAbsolutePath());
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(serObj);
+			fileOut.close();
+			objectOut.close();
+			System.out.println("Pomyślnie zapisano " + filename);
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public static Object[] TextIO_odczytajZPliku(String filename) throws ClassNotFoundException, IOException {
+
+		File file = new File(filename);
+		Object[] muzycy;
+		FileInputStream fileIn = new FileInputStream(file.getAbsolutePath());
+		ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+		muzycy = (Object[]) objectIn.readObject();
+		fileIn.close();
+		objectIn.close();
+		return muzycy;
+	}
+
+
 //    public Muzyk[] ReadObjectFromFile(String filepath) {
 //    	 
 //    	filepath = db.getAbsolutePath();
@@ -107,7 +105,6 @@ public class TextIO {
 //            return null;
 //        }
 //    }
-	
-	
+
 
 }

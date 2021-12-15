@@ -12,13 +12,14 @@ import repertuar.Piosenka;
 import rider.Rider;
 import sprzet.Mikrofon;
 import technika.Technik;
+import muzycy.*;
 
 import java.util.Random;
 
 import generator.Generator;
 
 public class Dane {
-	
+
 	static Muzyk[] muzycy;
 	static Instrument[] instrument;
 	static Mikrofon[] mikrofony;
@@ -27,21 +28,31 @@ public class Dane {
 	static Rider bogatszy;
 	static Rider najbogatszy;
 	static Technik[] technicy;
-	
-	
-	public static void Dane_InitializeDatabase() {
-		
+
+
+	public static void Dane_initializeDatabase() {
+
 		Dane_initializeBazaPiosenek();
 		Dane_initializeMuzycy();
 		Dane_initializeRider();
 		Dane_initializeTechnik();
 
-		
+
 		//hotfix
 		Dane_poprawCeneMuzykow(muzycy);
-	}
-	
 
+	}
+
+	public static void Dane_poprawCeneMuzykow(Muzyk[] muzycy) {
+
+		//hotfix
+		for (int i = 0; i < muzycy.length; i++) {
+
+			((Osoba) muzycy[i]).setStawka(300 * muzycy[i].getPoziomUmiejetnosci());
+
+		}
+
+	}
 
 
 	//metody inicjalizujace 'baze danych'
@@ -53,20 +64,20 @@ public class Dane {
 		/// Pianiści
 
 		muzycy[0] = new Pianista("Jan", "Kowalski", 3, 400, "Pojedynczy", false, Dane_wylosujRepertuar(baza));
-		muzycy[1] = new Pianista("Malgorzata", "Testowa",4, 500, "Pojedynczy", true, Dane_wylosujRepertuar(baza));
-		muzycy[2] = new Pianista("Aleksander", "Prawdziwy",4, 900, "Podwójny", false, Dane_wylosujRepertuar(baza));
+		muzycy[1] = new Pianista("Malgorzata", "Testowa", 4, 500, "Pojedynczy", true, Dane_wylosujRepertuar(baza));
+		muzycy[2] = new Pianista("Aleksander", "Prawdziwy", 4, 900, "Podwójny", false, Dane_wylosujRepertuar(baza));
 		muzycy[3] = new Pianista("Paweł", "Nowak", 4, 800, "Stolikowy", true, Dane_wylosujRepertuar(baza));
 		muzycy[4] = new Pianista("Karol", "Wiśniewski", 2, 400, "Typ Z", true, Dane_wylosujRepertuar(baza));
 		muzycy[5] = new Pianista("Bronisław", "Wójcik", 1, 100, "Podwójny", false, Dane_wylosujRepertuar(baza));
 		muzycy[6] = new Pianista("Czesław", "Kowalczyk", 2, 300, "Pojedynczy", false, Dane_wylosujRepertuar(baza));
 		muzycy[7] = new Pianista("Robert", "Lewandowski", 3, 500, "Podwójny", true, Dane_wylosujRepertuar(baza));
 		muzycy[8] = new Pianista("Filip", "Hajzer", 1, 300, "Stolikowy", true, Dane_wylosujRepertuar(baza));
-		muzycy[9] = new Pianista("Grzegorz", "Piotrowski", 5, 1200,"Typ Z", true, Dane_wylosujRepertuar(baza));
+		muzycy[9] = new Pianista("Grzegorz", "Piotrowski", 5, 1200, "Typ Z", true, Dane_wylosujRepertuar(baza));
 		muzycy[10] = new Pianista("Jerzy", "Mazur", 1, 500, "Pojedynczy", false, Dane_wylosujRepertuar(baza));
 		muzycy[11] = new Pianista("Kacper", "Wojciechowski", 4, 700, "Podwójny", false, Dane_wylosujRepertuar(baza));
 		muzycy[12] = new Pianista("Beata", "Krawczyk", 3, 500, "Stolikowy", true, Dane_wylosujRepertuar(baza));
-		muzycy[13] = new Pianista("Danuta", "Kołodziejczyk", 2, 300,"Typ Z", true, Dane_wylosujRepertuar(baza));
-		muzycy[14] = new Pianista("Katarzyna", "Grabowska", 3, 700, "Stolikowy",true, Dane_wylosujRepertuar(baza));
+		muzycy[13] = new Pianista("Danuta", "Kołodziejczyk", 2, 300, "Typ Z", true, Dane_wylosujRepertuar(baza));
+		muzycy[14] = new Pianista("Katarzyna", "Grabowska", 3, 700, "Stolikowy", true, Dane_wylosujRepertuar(baza));
 		muzycy[15] = new Pianista("Zofia", "Król", 1, 200, "Podwójny", false, Dane_wylosujRepertuar(baza));
 		muzycy[16] = new Pianista("Anna", "Michalska", 5, 1000, "Podwójny", true, Dane_wylosujRepertuar(baza));
 		muzycy[17] = new Pianista("Julia", "Kaczmarek", 3, 600, "Pojedynczy", false, Dane_wylosujRepertuar(baza));
@@ -76,7 +87,7 @@ public class Dane {
 		/// Wokaliści
 
 		muzycy[20] = new Wokalista("Janina", "Kowalska", 2, 100, "C3", "D6", Dane_wylosujRepertuar(baza));
-		muzycy[21] = new Wokalista("Arnold", "Fajny",  4, 600, "F3", "H5", Dane_wylosujRepertuar(baza));
+		muzycy[21] = new Wokalista("Arnold", "Fajny", 4, 600, "F3", "H5", Dane_wylosujRepertuar(baza));
 		muzycy[22] = new Wokalista("Bartosz", "Górski", 3, 400, "D1", "A3", Dane_wylosujRepertuar(baza));
 		muzycy[23] = new Wokalista("Bożena", "Malinowska", 1, 100, "H2", "B6", Dane_wylosujRepertuar(baza));
 		muzycy[24] = new Wokalista("Agnieszka", "Pawlak", 5, 800, "A2", "H7", Dane_wylosujRepertuar(baza));
@@ -110,7 +121,7 @@ public class Dane {
 		muzycy[49] = new Saksofonista("Marcelina", "Nogaj", 3, 700, true, Dane_wylosujRepertuar(baza));
 		muzycy[50] = new Saksofonista("Natalia", "Baranowska", 5, 1100, true, Dane_wylosujRepertuar(baza));
 		muzycy[51] = new Saksofonista("Michał", "Leszczyński", 4, 600, false, Dane_wylosujRepertuar(baza));
-		muzycy[52] = new Saksofonista("Dawid", "Zalewski", 1, 100,true, Dane_wylosujRepertuar(baza));
+		muzycy[52] = new Saksofonista("Dawid", "Zalewski", 1, 100, true, Dane_wylosujRepertuar(baza));
 		muzycy[53] = new Saksofonista("Agata", "Tomaszewska", 2, 300, false, Dane_wylosujRepertuar(baza));
 		muzycy[54] = new Saksofonista("Kinga", "Ptak", 4, 700, true, Dane_wylosujRepertuar(baza));
 		muzycy[55] = new Saksofonista("Marcel", "Zawadzki", 3, 600, true, Dane_wylosujRepertuar(baza));
@@ -118,15 +129,15 @@ public class Dane {
 		muzycy[57] = new Saksofonista("Nikodem", "Sawicki", 1, 400, false, Dane_wylosujRepertuar(baza));
 		muzycy[58] = new Saksofonista("Maksymilian", "Kalinowski", 2, 400, true, Dane_wylosujRepertuar(baza));
 		muzycy[59] = new Saksofonista("Miłosz", "Maciejewski", 3, 500, true, Dane_wylosujRepertuar(baza));
-		
-		
-		
+
+
 		Dane_initializeInstrument();
 		Dane_initializeMikrofon();
-		
+
+
 		Krytyk.Krytyk_ocenaUmiejetnosci(muzycy);
 	}
-	
+
 	public static void Dane_initializeInstrument() {
 
 		final int m = 20;
@@ -164,7 +175,7 @@ public class Dane {
 
 		final int k = 10;
 		mikrofony = new Mikrofon[k];
-		
+
 		mikrofony[0] = new Mikrofon("Sennheiser", "e835", true);
 		mikrofony[1] = new Mikrofon("Carol", "GS-607", false);
 		mikrofony[2] = new Mikrofon("BEHRINGER", "8500", true);
@@ -175,110 +186,102 @@ public class Dane {
 		mikrofony[7] = new Mikrofon("Blitzwolf", "TR458", false);
 		mikrofony[8] = new Mikrofon("AKG", "C-544L", true);
 		mikrofony[9] = new Mikrofon("ICHOS", "5900626834223", false);
-		
 
-		
-	}
-	public static void Dane_initializeBazaPiosenek(){
-		final int p = 16;
-		baza=new Piosenka[p];
 
-		baza[0]=new Piosenka("Cheri cheri lady","pop","1982");
-		baza[1]=new Piosenka("Ooop!...I did it again","pop","2000");
-		baza[2]=new Piosenka("Circus","pop","2008");
-		baza[3]=new Piosenka("Toxic","pop","2003");
-		baza[4]=new Piosenka("Umbrella","pop","2008");
-		baza[5]=new Piosenka("505","rock","2007");
-		baza[6]=new Piosenka("Let the Bad Times Roll","rock","2021");
-		baza[7]=new Piosenka("Africa","pop","1985");
-		baza[8]=new Piosenka("California","rock alternatywny","1999");
-		baza[9]=new Piosenka("Cant't stop","rock alternatywny","2002");
-		baza[10]=new Piosenka("We will rock you","rock","1977");
-		baza[11]=new Piosenka("Bohemian rhapsody","rock","1975");
-		baza[12]=new Piosenka("Mniej niż zero","pop-rock","1981");
-		baza[13]=new Piosenka("Kryzysowa nazeczona","soft rock","1983");
-		baza[14]=new Piosenka("Bad romance","pop","2009");
-		baza[15]=new Piosenka("Shallow","pop","2018");
 	}
-	
-	
+
+	public static void Dane_initializeBazaPiosenek() {
+
+		final int p = 16
+		baza = new Piosenka[p];
+
+		baza[0] = new Piosenka("Cheri cheri lady", "pop", "1982");
+		baza[1] = new Piosenka("Ooop!...I did it again", "pop", "2000");
+		baza[2] = new Piosenka("Circus", "pop", "2008");
+		baza[3] = new Piosenka("Toxic", "pop", "2003");
+		baza[4] = new Piosenka("Umbrella", "pop", "2008");
+		baza[5] = new Piosenka("505", "rock", "2007");
+		baza[6] = new Piosenka("Let the Bad Times Roll", "rock", "2021");
+		baza[7] = new Piosenka("Africa", "pop", "1985");
+		baza[8] = new Piosenka("California", "rock alternatywny", "1999");
+		baza[9] = new Piosenka("Cant't stop", "rock alternatywny", "2002");
+		baza[10] = new Piosenka("We will rock you", "rock", "1977");
+		baza[11] = new Piosenka("Bohemian rhapsody", "rock", "1975");
+		baza[12] = new Piosenka("Mniej niż zero", "pop-rock", "1981");
+		baza[13] = new Piosenka("Kryzysowa nazeczona", "soft rock", "1983");
+		baza[14] = new Piosenka("Bad romance", "pop", "2009");
+		baza[15] = new Piosenka("Shallow", "pop", "2018");
+	}
+
+
 	public static void Dane_initializeRider() {
-		
+
 		podstawowy = new Rider("Chipsy, paluszki", "4 gwiazdki", false, "10x5m", 3);
 		bogatszy = new Rider("Chipsy, paluszki, kanapki", "4 gwiazdki", false, "15x7m", 4);
 		najbogatszy = new Rider("Chipsy, paluszki, kanapki, obiad", "5 gwiazdek", true, "20x20m", 5);
 
+
 	}
-	
+
 	public static void Dane_initializeTechnik() {
 
-		final int r =3;
+
+		final int r = 3;
 		technicy = new Technik[r];
-		
+
 		technicy[0] = new Technik("Adam", "Kowalski", 300, 2, "Behringer X32", podstawowy);
 		technicy[1] = new Technik("Pawel", "Testowy", 500, 4, "Yamaha CL5", bogatszy);
 		technicy[2] = new Technik("Gawel", "Niepawel", 800, 5, "Soundcraft Si800", najbogatszy);
-		
-		
+
+
 	}
-	
-	
+
+
 	public static void Dane_przydzielInstrumenty() {
-		
-		for(int i=0; i<Generator.getMuzycy().length; i++) {
-			
-			if((Generator.getMuzycy()[i]) instanceof Wokalista) {
-				
+
+		for (int i = 0; i < Generator.getMuzycy().length; i++) {
+
+			if ((Generator.getMuzycy()[i]) instanceof Wokalista) {
+
 				Mikrofon mikrofon = Generator.Generator_generateMikrofon();
-				
-				((Wokalista)(Generator.getMuzycy()[i])).setMikrofon(mikrofon);
+
+				((Wokalista) (Generator.getMuzycy()[i])).setMikrofon(mikrofon);
 			}
-			
-			if((Generator.getMuzycy()[i]) instanceof Saksofonista) {
-				Saksofon saksofon = (Saksofon)Generator.Generator_generateInstrument("class instrument.Saksofon");
-				((Saksofonista)(Generator.getMuzycy()[i])).setSaksofon(saksofon);
+
+			if ((Generator.getMuzycy()[i]) instanceof Saksofonista) {
+				Saksofon saksofon = (Saksofon) Generator.Generator_generateInstrument("class instrument.Saksofon");
+				((Saksofonista) (Generator.getMuzycy()[i])).setSaksofon(saksofon);
 			}
-			
-			if((Generator.getMuzycy()[i]) instanceof Pianista) {
-				Keyboard keyboard = (Keyboard)Generator.Generator_generateInstrument("class instrument.Keyboard");
-				((Pianista)(Generator.getMuzycy()[i])).setKeyboard(keyboard);
+
+			if ((Generator.getMuzycy()[i]) instanceof Pianista) {
+				Keyboard keyboard = (Keyboard) Generator.Generator_generateInstrument("class instrument.Keyboard");
+				((Pianista) (Generator.getMuzycy()[i])).setKeyboard(keyboard);
 			}
 		}
-		
+
 	}
-	
-	public static Piosenka[] Dane_wylosujRepertuar(Piosenka[] p){
-		Random generator= new Random();
-		Piosenka[] repertuar= new Piosenka[generator.nextInt(15)+1];
-		for(int i=0;i<repertuar.length;i++){
-			repertuar[i]=p[i];
+
+	public static Piosenka[] Dane_wylosujRepertuar(Piosenka[] P) {
+		Random generator = new Random();
+		Piosenka[] repertuar = new Piosenka[generator.nextInt(15) + 1];
+		for (int i = 0; i < repertuar.length; i++) {
+			repertuar[i] = P[i];
 		}
 		return repertuar;
 	}
-	
-	public static void Dane_poprawCeneMuzykow(Muzyk[] muzycy) {
-		
-		//hotfix
-		for(int i = 0; i < muzycy.length; i++) {
-			
-			muzycy[i].setStawka(300*muzycy[i].getPoziomUmiejetnosci());
-	
-		}
-		
-	}
-	
+
+
 	public static void Dane_wydrukujMuzykow(Muzyk[] muzycy) {
-		for(int i = 0; i< muzycy.length; i++) {
-			
+		for (int i = 0; i < muzycy.length; i++) {
+
 			System.out.println(muzycy[i]);
 		}
 	}
-	
-	
-	
-	
-	
-	
+
+
+	// GETTERS & SETTERS
+
+
 	public static Rider getPodstawowy() {
 		return podstawowy;
 	}
@@ -294,7 +297,7 @@ public class Dane {
 	public static Technik[] getTechnicy() {
 		return technicy;
 	}
-	
+
 	public static Muzyk[] getMuzycy() {
 		return muzycy;
 	}

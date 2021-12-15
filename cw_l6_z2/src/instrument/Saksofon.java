@@ -1,15 +1,14 @@
 package instrument;
 
 public class Saksofon extends Instrument {
-	
-	private static final long serialVersionUID = -3391940550943806736L;
-	
+
+    private static final long serialVersionUID = -3391940550943806736L;
+
 
     private String rodzaj; // sopranowy, altowy, tenorowy, barytonowy
     private String strojMuzyczny; // B, Es
 
-    public Saksofon(String producent, int cena, int rokProdukcji, String rodzaj, String strojMuzyczny)
-    {
+    public Saksofon(String producent, int cena, int rokProdukcji, String rodzaj, String strojMuzyczny) {
         super(producent, cena, rokProdukcji);
 
         this.rodzaj = rodzaj;
@@ -34,10 +33,9 @@ public class Saksofon extends Instrument {
         this.rodzaj = rodzaj;
     }
 
-    public String getStringSaksofon()
-    {
-        return "Producent: "+getProducent()+"\tCena: "+getCena()+"\tRok produkcji: "+getRokProdukcji()
-                +"\tRodzaj: "+getRodzaj()+"\tStrój muzyczny: "+ getStrojMuzyczny();
+    public String getStringSaksofon() {
+        return "Producent: " + getProducent() + "\tCena: " + getCena() + "\tRok produkcji: " + getRokProdukcji()
+                + "\tRodzaj: " + getRodzaj() + "\tStrój muzyczny: " + getStrojMuzyczny();
     }
 
 

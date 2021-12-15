@@ -1,33 +1,32 @@
 package technika;
 
 import muzycy.Osoba;
+
+package technika;
+
 import rider.Rider;
 
-public class Technik extends Osoba{
-	
+public class Technik extends Osoba {
+
 	private int stawka;
 	private int poziomUmiejetnosci;
 	private String preferowanyStol;
 	Rider rider;
-	
-	
-	public Technik(String imie, String nazwisko, int stawka, int poziomUmiejetnosci, String preferowanyStol, Rider rider){
-		
-		super(imie, nazwisko);
-		this.stawka = stawka;
+
+
+	public Technik(String imie, String nazwisko, int stawka, int poziomUmiejetnosci, String preferowanyStol, Rider rider) {
+
+		super(imie, nazwisko, stawka);
+
 		this.poziomUmiejetnosci = poziomUmiejetnosci;
 		this.preferowanyStol = preferowanyStol;
 		this.rider = rider;
-		
-		
-		
+
+
 	}
+
 
 	// GETTERS & SETTERS
-
-	public int getStawka() {
-		return stawka;
-	}
 
 
 	public void setStawka(int stawka) {
@@ -50,8 +49,8 @@ public class Technik extends Osoba{
 	}
 
 
-	public void setPreferowanyStol(String preferowanStol) {
-		this.preferowanyStol = preferowanStol;
+	public void setPreferowanyStol(String preferowanyStol) {
+		this.preferowanyStol = preferowanyStol;
 	}
 
 
@@ -63,9 +62,6 @@ public class Technik extends Osoba{
 	public void setRider(Rider rider) {
 		this.rider = rider;
 	}
-	
-	
-	
-	
+
 
 }
