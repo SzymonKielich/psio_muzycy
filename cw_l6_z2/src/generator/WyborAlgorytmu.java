@@ -8,7 +8,6 @@ import zespol.Zespol;
 
 import java.util.List;
 
-public interface WyborAlgorytmu
-{
-    Zespol Algorytm(List<Technik> technicy , List <Wokalista> wokalisci , List <Pianista> pianisci , List <Saksofonista> saksofonisci , int budzet);
+public interface WyborAlgorytmu {
+    Zespol Algorytm(List<Technik> technicy, List<Wokalista> wokalisci, List<Pianista> pianisci, List<Saksofonista> saksofonisci, int budzet);
 }

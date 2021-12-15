@@ -20,25 +20,23 @@ import java.util.Scanner;
 import static java.lang.Math.*;
 import muzycy.*;
 public class Zespol {
-	
-	private Technik technik;
+
+    private Technik technik;
     private Wokalista wokalista;
     private Pianista pianista;
     private Saksofonista saksofonista;
     private static WyborAlgorytmu wybor;
 
-    public static void WybiierzAlgorytm()
-    {
-        System.out.println( "\nWybierz algorytm tworzacy zespol:" );
-        System.out.println( "[1] Algorytm naiwny" );
-        System.out.println( "[2] Algorytm dynamiczny" );
+    public static void WybierzAlgorytm() {
+        System.out.println("\nWybierz algorytm tworzacy zespol:");
+        System.out.println("[1] Algorytm naiwny");
+        System.out.println("[2] Algorytm dynamiczny");
 
         Scanner skan = new Scanner(System.in);
         int opcja = skan.nextInt();
 
-        while ( opcja < 1 && opcja > 2 )
-        {
-            System.out.println( "Wprowadzona powinna zostac liczba 1 albo 2! Sprobuj ponownie:" );
+        while (opcja < 1 && opcja > 2) {
+            System.out.println("Wprowadzona powinna zostac liczba 1 albo 2! Sprobuj ponownie:");
             opcja = skan.nextInt();
         }
 
@@ -50,10 +48,9 @@ public class Zespol {
 
     }
 
-    public Zespol( Technik technik , Wokalista wokalista , Pianista pianista , Saksofonista saksofonista )
-    {
+    public Zespol(Technik technik, Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
         this.technik = technik;
-        this.wokalista =  wokalista;
+        this.wokalista = wokalista;
         this.pianista = pianista;
         this.saksofonista = saksofonista;
     }
@@ -73,20 +70,20 @@ public class Zespol {
     public Saksofonista getSaksofonista() {
         return saksofonista;
     }
-	
-	
-	public static void optimalTeam(Technik [] technicytmp , Muzyk [] muzycy, int budzet) {
-		
-		List <Technik> technicy = Arrays.asList(technicytmp);
-        List <Wokalista> wokalisci = arrayWokalisci(muzycy);
-        List <Pianista> pianisci = arrayPianisci(muzycy);
-        List <Saksofonista> saksofonisci  = arraySaksofonisci(muzycy);
-        Zespol zespol = wybor.Algorytm( technicy , wokalisci , pianisci , saksofonisci , budzet );
-        
-        showOptimalTeam(zespol,budzet);
-		
 
-	}
+
+    public static void Zespol_optimalTeam(Technik[] technicytmp, Muzyk[] muzycy, int budzet) {
+
+        List<Technik> technicy = Arrays.asList(technicytmp);
+        List<Wokalista> wokalisci = Zespol_arrayWokalisci(muzycy);
+        List<Pianista> pianisci = Zespol_arrayPianisci(muzycy);
+        List<Saksofonista> saksofonisci = Zespol_arraySaksofonisci(muzycy);
+        Zespol zespol = wybor.Algorytm(technicy, wokalisci, pianisci, saksofonisci, budzet);
+
+        Zespol_showOptimalTeam(zespol, budzet);
+
+
+    }
 
     /*
 	public static Zespol wybierzZespol( List <Technik> technicy , List <Wokalista> wokalisci , List <Pianista> pianisci , List <Saksofonista> saksofonisci , int budzet )
@@ -160,62 +157,62 @@ public class Zespol {
             return null;
     }
 */
-	
-	public static List<Pianista> arrayPianisci(Muzyk [] tab) {
-    	
-		List<Pianista> pianisci = new ArrayList<Pianista>();
-    	
-		for(int i=0; i<tab.length; i++) {
-    		if(tab[i] instanceof Pianista) {
-    			pianisci.add((Pianista)tab[i]);
-    		}
-    	}    
-    	((ArrayList<Pianista>) pianisci).trimToSize();
-    	return pianisci;
+
+    public static List<Pianista> Zespol_arrayPianisci(Muzyk[] tab) {
+
+        List<Pianista> pianisci = new ArrayList<Pianista>();
+
+        for (int i = 0; i < tab.length; i++) {
+            if (tab[i] instanceof Pianista) {
+                pianisci.add((Pianista) tab[i]);
+            }
+        }
+        ((ArrayList<Pianista>) pianisci).trimToSize();
+        return pianisci;
     }
-	
-	
-	public static List<Saksofonista> arraySaksofonisci(Muzyk [] tab) {
-    	
-		List<Saksofonista> saksofonisci = new ArrayList<Saksofonista>();
-    	
-		for(int i=0; i<tab.length;i++) {
-    		if(tab[i] instanceof Saksofonista) {
-    			saksofonisci.add((Saksofonista)tab[i]);
-    		}
-    	}    	
-		((ArrayList<Saksofonista>) saksofonisci).trimToSize();
-    	return saksofonisci;
+
+
+    public static List<Saksofonista> Zespol_arraySaksofonisci(Muzyk[] tab) {
+
+        List<Saksofonista> saksofonisci = new ArrayList<Saksofonista>();
+
+        for (int i = 0; i < tab.length; i++) {
+            if (tab[i] instanceof Saksofonista) {
+                saksofonisci.add((Saksofonista) tab[i]);
+            }
+        }
+        ((ArrayList<Saksofonista>) saksofonisci).trimToSize();
+        return saksofonisci;
     }
-	
-	
-	public static List<Wokalista> arrayWokalisci(Muzyk [] tab) {
-    	
-		List<Wokalista> wokalisci = new ArrayList<Wokalista>();
-    	
-		for(int i=0; i<tab.length;i++) {
-    		if(tab[i] instanceof Wokalista) {
-    			wokalisci.add((Wokalista)tab[i]);
-    		}
-    	}    
-    	((ArrayList<Wokalista>) wokalisci).trimToSize();
-    	return wokalisci;
+
+
+    public static List<Wokalista> Zespol_arrayWokalisci(Muzyk[] tab) {
+
+        List<Wokalista> wokalisci = new ArrayList<Wokalista>();
+
+        for (int i = 0; i < tab.length; i++) {
+            if (tab[i] instanceof Wokalista) {
+                wokalisci.add((Wokalista) tab[i]);
+            }
+        }
+        ((ArrayList<Wokalista>) wokalisci).trimToSize();
+        return wokalisci;
     }
-	
-	public static void showOptimalTeam(Zespol zespol, int budzet) {
-		
-		if ( zespol == null )
-            System.out.println( "Z danej grupy nie mozna utworzyc zespolu w twoim budzecie!" );
+
+    public static void Zespol_showOptimalTeam(Zespol zespol, int budzet) {
+
+        if (zespol == null)
+            System.out.println("Z danej grupy nie mozna utworzyc zespolu w twoim budzecie!");
 
         else {
-        	System.out.println("\n-------------------------");
-        	System.out.println("\nNajbardziej optymalny zespol pod wzgledem ceny oraz poziomu umiejetnosci w stosunku do budzetu wynoszacego: "+budzet);
-        	Generator.sendBrief(zespol.getWokalista(), zespol.getPianista(), zespol.getTechnik(), zespol.getSaksofonista());
-   	
+            System.out.println("\n-------------------------");
+            System.out.println("\nNajbardziej optymalny zespol pod wzgledem ceny oraz poziomu umiejetnosci w stosunku do budzetu wynoszacego: " + budzet);
+            Generator.sendBrief(zespol.getWokalista(), zespol.getPianista(), zespol.getTechnik(), zespol.getSaksofonista());
+
         }
-	
-		
-	}
+
+
+    }
 
 
 }

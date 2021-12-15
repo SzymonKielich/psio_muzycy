@@ -2,25 +2,27 @@ package repertuar;
 
 import java.io.Serializable;
 
-public class Piosenka implements Serializable{
+public class Piosenka implements Serializable {
 
     private String tytul;
     private String gatunek;
     private String rokWydania;
 
-    public Piosenka(String tytul,String gatunek,String rokWydania) {
-        this.tytul=tytul;
-        this.gatunek=gatunek;
-        this.rokWydania=rokWydania;
+    public Piosenka(String tytul, String gatunek, String rokWydania) {
+        this.tytul = tytul;
+        this.gatunek = gatunek;
+        this.rokWydania = rokWydania;
     }
-    
-    
+
+
     @Override
     public String toString() {
-		
-    	return this.tytul + " , " + this.gatunek + " , Rok wydania: " + this.rokWydania;
+
+        return this.tytul + " , " + this.gatunek + " , Rok wydania: " + this.rokWydania;
     }
-    
+
+    // GETTERS & SETTERS
+
 
     public String getTytul() {
         return tytul;
@@ -45,10 +47,6 @@ public class Piosenka implements Serializable{
     public void setRokWydania(String rokWydania) {
         this.rokWydania = rokWydania;
     }
-
-
-
-
 
 
 }

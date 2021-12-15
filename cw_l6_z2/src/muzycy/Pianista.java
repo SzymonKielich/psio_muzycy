@@ -5,29 +5,32 @@ import instrument.Keyboard;
 import repertuar.Piosenka;
 
 
-public class Pianista extends Muzyk{
+public class Pianista extends Muzyk {
 
 	private String rodzajStatywu;
 	private boolean czySpiewa;
 	private Keyboard keyboard = null;
-	
+
 	public Pianista() {
-		
+
 	}
-	
-	public Pianista(String imie, String nazwisko, int poziomUmiejetnosci, int stawka, String rodzajStatywu, boolean czySpiewa, Piosenka[]tab) {
-		
-		super(imie,nazwisko,poziomUmiejetnosci,stawka,tab);
+
+	public Pianista(String imie, String nazwisko, int poziomUmiejetnosci, int stawka, String rodzajStatywu, boolean czySpiewa, Piosenka[] tab) {
+
+		super(imie, nazwisko, poziomUmiejetnosci, stawka, tab);
 
 		this.rodzajStatywu = rodzajStatywu;
 		this.czySpiewa = czySpiewa;
 	}
+
 	//metoda przyslonieta z klasy muzyk
-	public void play(Pianista pianista) {
-		
+	public void Muzyk_play(Pianista pianista) {
+
 		System.out.println("Odtwarzam demo pianisty: " + pianista.getImie() + " " + pianista.getNazwisko());
 	}
 
+
+	// GETTERS & SETTERS
 
 	public String getRodzajStatywu() {
 		return rodzajStatywu;
@@ -49,22 +52,13 @@ public class Pianista extends Muzyk{
 	}
 
 
-	public String getStringKeyboard()
-	{
+	public String getStringKeyboard() {
 		return keyboard.getStringKeyboard();
 	}
 
-	public void setKeyboard(Keyboard keyboard)
-	{
+	public void setKeyboard(Keyboard keyboard) {
 		this.keyboard = keyboard;
 	}
 
-
-
-
-	
-	
-	
-	
 
 }

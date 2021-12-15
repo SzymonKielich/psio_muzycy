@@ -4,32 +4,33 @@ import java.io.Serializable;
 
 import repertuar.Piosenka;
 
-public abstract class Muzyk extends Osoba implements Serializable{
+public abstract class Muzyk extends Osoba implements Serializable {
 
 	private int poziomUmiejetnosci;
 
-	private Piosenka[] repertuar ;
+	private Piosenka[] repertuar;
 	private static final long serialVersionUID = 1234567L;
-	
-	public Muzyk(String imie, String nazwisko, int stawka,int poziomUmiejetnosci, Piosenka[] repertuar) {
-		
-		super(imie, nazwisko,stawka);
+
+	public Muzyk(String imie, String nazwisko, int stawka, int poziomUmiejetnosci, Piosenka[] repertuar) {
+
+		super(imie, nazwisko, stawka);
 
 		this.poziomUmiejetnosci = poziomUmiejetnosci;
 
-		this.repertuar=repertuar;
-		
-		
-	
+		this.repertuar = repertuar;
+
+
 	}
+
 	public Muzyk() {
-		
+
 	}
-	public static void play(Muzyk muzyk) {
-		
+
+	public static void Muzyk_play(Muzyk muzyk) {
+
 		System.out.println("Odtwarzam demo muzyka...");
-		
-		
+
+
 	}
 
 
@@ -37,6 +38,8 @@ public abstract class Muzyk extends Osoba implements Serializable{
 	public String toString() {
 		return "Muzyk " + this.getImie() + " " + this.getNazwisko();
 	}
+
+	// GETTERS & SETTERS
 
 
 	public int getPoziomUmiejetnosci() {
@@ -47,12 +50,6 @@ public abstract class Muzyk extends Osoba implements Serializable{
 	public void setPoziomUmiejetnosci(int poziomUmiejetnosci) {
 		this.poziomUmiejetnosci = poziomUmiejetnosci;
 	}
-
-
-
-
-
-
 
 
 	public Piosenka[] getRepertuar() {

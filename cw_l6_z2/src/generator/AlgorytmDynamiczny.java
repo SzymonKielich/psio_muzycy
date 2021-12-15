@@ -9,11 +9,9 @@ import java.util.List;
 
 import static java.lang.Math.max;
 
-public class AlgorytmDynamiczny implements WyborAlgorytmu
-{
+public class AlgorytmDynamiczny implements WyborAlgorytmu {
     @Override
-    public Zespol Algorytm(List<Technik> technicy , List <Wokalista> wokalisci , List <Pianista> pianisci , List <Saksofonista> saksofonisci , int budzet)
-    {
+    public Zespol AlgorytmDynamiczny_Algorytm(List<Technik> technicy, List<Wokalista> wokalisci, List<Pianista> pianisci, List<Saksofonista> saksofonisci, int budzet) {
         ArrayList<Osoba> osoby = new ArrayList<Osoba>();
 
         osoby.addAll(saksofonisci);
@@ -38,35 +36,29 @@ public class AlgorytmDynamiczny implements WyborAlgorytmu
                 if ((osoby.get(i - 1)).getStawka() > j)
                     T[i][j] = T[i][j - 1];
 
-                else
-                {
-                    T[i][j] = max(T[i-1][j] , T[i-1][j-osoby.get(i-1).getStawka()] + ((Muzyk)osoby.get(i-1)).getPoziomUmiejetnosci());
+                else {
+                    T[i][j] = max(T[i - 1][j], T[i - 1][j - osoby.get(i - 1).getStawka()] + ((Muzyk) osoby.get(i - 1)).getPoziomUmiejetnosci());
 
                 }
             }
 
-        List <Osoba> wynik = new ArrayList();
+        List<Osoba> wynik = new ArrayList();
 
-        int j=m;
+        int j = m;
 
-        for (int i=n; i>0 && j>0; i--)
-            if ( T[i][j] != T[i-1][j] )
-            {
-                j -= osoby.get(i-1).getStawka();
+        for (int i = n; i > 0 && j > 0; i--)
+            if (T[i][j] != T[i - 1][j]) {
+                j -= osoby.get(i - 1).getStawka();
                 wynik.add(osoby.get(i));
             }
 
-        if ( wynik.size() == 4 )
-        {
-            if ( wynik.get(0) instanceof Saksofonista && wynik.get(1) instanceof Wokalista && wynik.get(2) instanceof Pianista  && wynik.get(3) instanceof Technik )
-                return new Zespol( (Technik)wynik.get(3) , (Wokalista)wynik.get(1) , (Pianista)wynik.get(2) , (Saksofonista)wynik.get(0) );
+        if (wynik.size() == 4) {
+            if (wynik.get(0) instanceof Saksofonista && wynik.get(1) instanceof Wokalista && wynik.get(2) instanceof Pianista && wynik.get(3) instanceof Technik)
+                return new Zespol((Technik) wynik.get(3), (Wokalista) wynik.get(1), (Pianista) wynik.get(2), (Saksofonista) wynik.get(0));
 
             else
                 return null;
-        }
-
-
-        else
+        } else
             return null;
     }
 }

@@ -34,179 +34,164 @@ public class Generator {
 	static Mikrofon[] mikrofony;
 	static Piosenka[] baza;
 
-  
-	public static void main (String [] args) throws ClassNotFoundException, IOException {
-		
-		
-		Dane.initializeDatabase();
-//		TextIO.zresetujDane();
-		
-		
-		TextIO.pobierzDane();
-		
 
-		
+	public static void main(String[] args) throws ClassNotFoundException, IOException {
+
+
+		Dane.Dane_initializeDatabase();
+//		TextIO.TextIO_zresetujDane();
+
+
+		TextIO.TextIO_pobierzDane();
+
+
 		podstawowy = Dane.getPodstawowy();
 		bogatszy = Dane.getBogatszy();
 		najbogatszy = Dane.getNajbogatszy();
 		technicy = Dane.getTechnicy();
-		
-		
-//		TextIO.zresetujDane();
+
+
+//		TextIO.TextIO_zresetujDane();
 //		muzycy[0].setImie("Test");
-//		Dane.wydrukujMuzykow(muzycy);
-		
-		
+//		Dane.Dane_wydrukujMuzykow(muzycy);
 
-		
 
-		
-		Wokalista wokalista = (Wokalista)generateMuzyk("class muzycy.Wokalista");
-		Pianista pianista = (Pianista)generateMuzyk("class muzycy.Pianista");
-		Saksofonista saksofonista = (Saksofonista)generateMuzyk("class muzycy.Saksofonista");
-		Technik technik = generateTechnik(wokalista, pianista, saksofonista);
+		Wokalista wokalista = (Wokalista) Generator_generateMuzyk("class muzycy.Wokalista");
+		Pianista pianista = (Pianista) Generator_generateMuzyk("class muzycy.Pianista");
+		Saksofonista saksofonista = (Saksofonista) Generator_generateMuzyk("class muzycy.Saksofonista");
+		Technik technik = Generator_generateTechnik(wokalista, pianista, saksofonista);
 
-		
-		
-		sendBrief(wokalista, pianista, technik, saksofonista);
 
-		Zespol.WybiierzAlgorytm();
-		Zespol.optimalTeam(technicy, muzycy, 2500);
+		Generator_sendBrief(wokalista, pianista, technik, saksofonista);
 
-		
+		Zespol.Zespol_WybiierzAlgorytm();
+		Zespol.Zespol_optimalTeam(technicy, muzycy, 2500);
+
+
 //		System.out.println("-----------------");
 //		System.out.println("Demonstracja mechanizmu polimorfizmu na przykladzie metody play:");
-//		pianista.play(pianista);
-//		wokalista.play(wokalista);
-		
+//		pianista.Muzyk_play(pianista);
+//		wokalista.Muzyk_play(wokalista);
 
-		
-		TextIO.zapiszDane();
+
+		TextIO.TextIO_zapiszDane();
 	}
-	
-	
+
+
 	//generowanie propozycji koncertu
-	public static void sendBrief(Wokalista wokalista, Pianista pianista, Technik technik, Saksofonista saksofonista) {
-		
+	public static void Generator_sendBrief(Wokalista wokalista, Pianista pianista, Technik technik, Saksofonista saksofonista) {
+
 		Rider rider = technik.getRider();
-		
-		System.out.println("Brief koncertu " + wokalista.getImie() + " " + wokalista.getNazwisko() + " przy akompaniamencie " + pianista.getImie() + " " + pianista.getNazwisko()+", "+saksofonista.getImie()+" "+saksofonista.getNazwisko());
+
+		System.out.println("Brief koncertu " + wokalista.getImie() + " " + wokalista.getNazwisko() + " przy akompaniamencie " + pianista.getImie() + " " + pianista.getNazwisko() + ", " + saksofonista.getImie() + " " + saksofonista.getNazwisko());
 		System.out.println("--------------------------------");
-		System.out.println("\u001B[31m" +"Stawka zespolu: " + seePrice(wokalista, pianista, saksofonista) + " zl"+ "\u001B[0m");
-		System.out.println("Umiejetnosci sumaryczne zespolu w skali 0-15: " + (wokalista.getPoziomUmiejetnosci()+pianista.getPoziomUmiejetnosci()+saksofonista.getPoziomUmiejetnosci()));
+		System.out.println("\u001B[31m" + "Stawka zespolu: " + Generator_seePrice(wokalista, pianista, saksofonista) + " zl" + "\u001B[0m");
+		System.out.println("Umiejetnosci sumaryczne zespolu w skali 0-15: " + (wokalista.getPoziomUmiejetnosci() + pianista.getPoziomUmiejetnosci() + saksofonista.getPoziomUmiejetnosci()));
 		System.out.println("W tym klawiszowiec: " + pianista.getPoziomUmiejetnosci() + "/5 Saksofonista: " + saksofonista.getPoziomUmiejetnosci() + "/5 Wokalista: " + wokalista.getPoziomUmiejetnosci() + "/5");
 		System.out.println("Instrument klawiszowca: " + pianista.getStringKeyboard());
 
 
-		System.out.println("Instrument saksofonisty: "+ saksofonista.getStringSaksofon());
+		System.out.println("Instrument saksofonisty: " + saksofonista.getStringSaksofon());
 		System.out.println("--------------------------------");
 		System.out.println("Szczegoly dotyczace rideru:");
-		System.out.print("Mikrofon wokalistki: "); 
-		wokalista.wyswietlUlubionyMikrofon();
+		System.out.print("Mikrofon wokalistki: ");
+		wokalista.Wokalista_wyswietlUlubionyMikrofon();
 		System.out.println("Przekaski: " + rider.getPrzekaski());
 		System.out.println("W przypadku wyjazdu, minimalny standard hotelu: " + rider.getHotel());
 		System.out.println("Minimalne wymiary sceny: " + rider.getStageSize());
 		System.out.println("Czy potrzebni handzi? " + rider.isHandsNeeded());
 		System.out.println("Technik: " + technik.getImie() + " " + technik.getNazwisko());
-		System.out.println("Poziom umiejetnosci technika: " + technik.getPoziom_umiejetnosci() + "/5");
-		System.out.println("Preferowany stol: " + technik.getPreferowany_stol());
+		System.out.println("Poziom umiejetnosci technika: " + technik.getPoziomUmiejetnosci() + "/5");
+		System.out.println("Preferowany stol: " + technik.getPreferowanyStol());
 		System.out.println("Stawka technika: " + technik.getStawka() + " zl");
 		System.out.println("--------------------------------");
-		System.out.println("\u001B[31m" + "Koszt zespolu: " + (seePrice(wokalista, pianista, saksofonista) + technik.getStawka()) + " zl" + "\u001B[0m");
+		System.out.println("\u001B[31m" + "Koszt zespolu: " + (Generator_seePrice(wokalista, pianista, saksofonista) + technik.getStawka()) + " zl" + "\u001B[0m");
 		System.out.println("--------------------------------");
 		System.out.println("Repertuar:");
-		wydrukujRepertuar(wokalista, pianista, saksofonista);
-		
+		Generator_wydrukujRepertuar(wokalista, pianista, saksofonista);
 
 
-		
-		
 	}
-	
+
 	//wydrukuj liste zawierajaca utwory wszystkich muzyków, bez powtórzeń
-	public static void wydrukujRepertuar(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
-		
+	public static void Generator_wydrukujRepertuar(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
+
 		ArrayList<Piosenka> repertuar = new ArrayList<Piosenka>();
-		
+
 		repertuar.addAll(Arrays.asList(wokalista.getRepertuar()));
-		
-		for(int i = 0; i < pianista.getRepertuar().length; i++) {
-			
-			if(repertuar.contains(pianista.getRepertuar()[i]) == false) {
+
+		for (int i = 0; i < pianista.getRepertuar().length; i++) {
+
+			if (repertuar.contains(pianista.getRepertuar()[i]) == false) {
 				repertuar.add(pianista.getRepertuar()[i]);
 			}
-			
+
 		}
-		for(int i = 0; i < saksofonista.getRepertuar().length; i++) {
-			
-			if(repertuar.contains(saksofonista.getRepertuar()[i]) == false) {
+		for (int i = 0; i < saksofonista.getRepertuar().length; i++) {
+
+			if (repertuar.contains(saksofonista.getRepertuar()[i]) == false) {
 				repertuar.add(saksofonista.getRepertuar()[i]);
 			}
-			
+
 		}
-		
-	//drukowanie
-		
+
+		//drukowanie
+
 		System.out.println("Liczba utworów mozliwych do zagrania: " + repertuar.size());
-		
-		for(int i = 0; i < repertuar.size(); i++) {
-			
+
+		for (int i = 0; i < repertuar.size(); i++) {
+
 			System.out.println(repertuar.get(i));
-			
-			
+
+
 		}
-		
-		
+
+
 	}
-	
-	
-	
-	
+
+
 	//metoda zwracajaca cene wystepu wokalisty i pianisty przeslanego jako parametr
-	public static int seePrice(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
+	public static int Generator_seePrice(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
 
 		int price = wokalista.getStawka() + pianista.getStawka() + saksofonista.getStawka();
 
 		return price;
 	}
-	
-	
-	
+
+
 	//przydzielenie technika w zależności od budżetu
-	public static Technik generateTechnik(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
-		
-		int price = seePrice(wokalista, pianista, saksofonista);
-		
-		if(price < 1800) {
+	public static Technik Generator_generateTechnik(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {
+
+		int price = Generator_seePrice(wokalista, pianista, saksofonista);
+
+		if (price < 1800) {
 			return technicy[0];
 		} else if (price < 2500) {
 			return technicy[1];
 		} else {
 			return technicy[2];
 		}
-		
-		
-		
+
+
 	}
-	
+
 	//zastepuje metody generateWokaliska, generatePianista, generateSaksofonista
-	public static Muzyk generateMuzyk(String jakiMuzyk) //format wprowadzania: "class packageName.className" na przyklad "class muzycy.Pianista"
+	public static Muzyk Generator_generateMuzyk(String jakiMuzyk) //format wprowadzania: "class packageName.className" na przyklad "class muzycy.Pianista"
 	{
 		Random generator = new Random();
 		int randomNumber;
-		
-		do
-		{
+
+		do {
 			randomNumber = generator.nextInt(muzycy.length);
-			
-		}while(!(muzycy[randomNumber].getClass().toString().equals(jakiMuzyk)));
-		
+
+		} while (!(muzycy[randomNumber].getClass().toString().equals(jakiMuzyk)));
+
 		return muzycy[randomNumber];
 	}
 
-	
+
 	//generowanie przypadkowego wokalisty
-	/*public static Wokalista generateWokalista() {
+	/*public static Wokalista Generator_generateWokalista() {
 		
 		Random generator = new Random();
 		Wokalista wokalista;
@@ -228,7 +213,7 @@ public class Generator {
 	}
 	
 	//generowanie przypadkowego pianisty
-	public static Pianista generatePianista() {
+	public static Pianista Generator_generatePianista() {
 		
 		Random generator = new Random();
 		Pianista pianista;
@@ -249,7 +234,7 @@ public class Generator {
 		
 	}
 	//generowanie losowego saksofonisty
-	public static Saksofonista generateSaksofonista() {
+	public static Saksofonista Generator_generateSaksofonista() {
 		Random generator = new Random();
 		Saksofonista saksofonista;
 		int randomNumber = generator.nextInt(muzycy.length);
@@ -262,22 +247,22 @@ public class Generator {
 	} */
 
 	//zastepuje generateKeyboard i generateSaksofon
-	public static Instrument generateInstrument(String jakiInstrument) //format wprowadzania: "class packageName.className" na przyklad "class instrument.Keyboard"
+	public static Instrument Generator_generateInstrument(String jakiInstrument) //format wprowadzania: "class packageName.className" na przyklad "class instrument.Keyboard"
 	{
 		Random generator = new Random();
 		int randomNumber;
-		
-		do{
-			
+
+		do {
+
 			randomNumber = generator.nextInt(instrument.length);
-			
-		}while(!(instrument[randomNumber].getClass().toString().equals(jakiInstrument)));
-		
+
+		} while (!(instrument[randomNumber].getClass().toString().equals(jakiInstrument)));
+
 		return instrument[randomNumber];
 	}
-	
+
 	//generowanie losowego keyboarda
-	/*public static Keyboard generateKeyboard() {
+	/*public static Keyboard Generator_generateKeyboard() {
 		Random generator = new Random();
 		Keyboard keyboard;
 		int randomNumber = generator.nextInt(instrument.length);
@@ -289,7 +274,7 @@ public class Generator {
 		return keyboard;
 	}
 	//generowanie losowego saksofonu
-	public static Saksofon generateSaksofon() {
+	public static Saksofon Generator_generateSaksofon() {
 		Random generator = new Random();
 		Saksofon saksofon;
 		int randomNumber = generator.nextInt(instrument.length);
@@ -300,9 +285,9 @@ public class Generator {
 		saksofon = (Saksofon) instrument[randomNumber];
 		return saksofon;
 	} */
-	
+
 	//generowanie losowego mikrofonu
-	public static Mikrofon generateMikrofon() {
+	public static Mikrofon Generator_generateMikrofon() {
 
 		Random generator = new Random();
 		Mikrofon mikrofon;
@@ -317,28 +302,26 @@ public class Generator {
 
 		return mikrofon;
 
-	
 
 	}
-	
+
 	//generowanie przypadkowego trio i wydrukowanie imienia i nazwiska, metoda nieużywana
-	public static void generateTrio() {
-		
-		Wokalista wokalista = (Wokalista)generateMuzyk("class muzycy.Wokalista");
-		Pianista pianista = (Pianista)generateMuzyk("class muzycy.Pianista");
-		Saksofonista saksofonista = (Saksofonista)generateMuzyk("class muzycy.Saksofonista");
-		
+	public static void Generator_generateTrio() {
+
+		Wokalista wokalista = (Wokalista) Generator_generateMuzyk("class muzycy.Wokalista");
+		Pianista pianista = (Pianista) Generator_generateMuzyk("class muzycy.Pianista");
+		Saksofonista saksofonista = (Saksofonista) Generator_generateMuzyk("class muzycy.Saksofonista");
+
 		System.out.println("Wygenerowano trio:");
 		System.out.println("Pianista: " + pianista.getImie() + " " + pianista.getNazwisko());
 		System.out.println("Wokalista: " + wokalista.getImie() + " " + wokalista.getNazwisko());
-		System.out.println("Saksofonista: "+saksofonista.getImie()+" "+saksofonista.getNazwisko());
-		
-		
-		
+		System.out.println("Saksofonista: " + saksofonista.getImie() + " " + saksofonista.getNazwisko());
+
+
 	}
-	
 
 
+// GETTERS & SETTERS
 
 	public static Muzyk[] getMuzycy() {
 		return muzycy;
@@ -378,12 +361,6 @@ public class Generator {
 	public static void setBaza(Piosenka[] baza) {
 		Generator.baza = baza;
 	}
-	
-	
-
-
-
-
 
 
 }
