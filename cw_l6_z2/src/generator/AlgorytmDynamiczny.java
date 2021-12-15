@@ -11,7 +11,7 @@ import static java.lang.Math.max;
 
 public class AlgorytmDynamiczny implements WyborAlgorytmu {
     @Override
-    public Zespol AlgorytmDynamiczny_Algorytm(List<Technik> technicy, List<Wokalista> wokalisci, List<Pianista> pianisci, List<Saksofonista> saksofonisci, int budzet) {
+    public Zespol Algorytm(List<Technik> technicy, List<Wokalista> wokalisci, List<Pianista> pianisci, List<Saksofonista> saksofonisci, int budzet) {
         ArrayList<Osoba> osoby = new ArrayList<Osoba>();
 
         osoby.addAll(saksofonisci);

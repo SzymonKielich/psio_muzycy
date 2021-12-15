@@ -2,7 +2,6 @@ package technika;
 
 import muzycy.Osoba;
 
-package technika;
 
 import rider.Rider;
 

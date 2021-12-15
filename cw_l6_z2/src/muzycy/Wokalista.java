@@ -3,7 +3,7 @@ import repertuar.Piosenka;
 import sprzet.Mikrofon;
 
 public class Wokalista extends Muzyk {
-
+	private static final long serialVersionUID = 2861962873409064960L;
 	private String skalaPoczatek;
 	private String skalaKoniec;
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AlgorytmNaiwny implements WyborAlgorytmu {
     @Override
-    public Zespol AlgorytmNaiwny_Algorytm(List<Technik> technicy, List<Wokalista> wokalisci, List<Pianista> pianisci, List<Saksofonista> saksofonisci, int budzet) {
+    public Zespol Algorytm(List<Technik> technicy, List<Wokalista> wokalisci, List<Pianista> pianisci, List<Saksofonista> saksofonisci, int budzet) {
         int iT = 0, iW = 0, iP = 0, iS = 0, suma = 0;
 
         for (int i = 0; i < technicy.size(); i++)
@@ -18,7 +18,7 @@ public class AlgorytmNaiwny implements WyborAlgorytmu {
                 for (int k = 0; k < pianisci.size(); k++)
                     for (int l = 0; l < saksofonisci.size(); l++) {
                         boolean czyWBudzecie = (technicy.get(i).getStawka() + wokalisci.get(j).getStawka() + pianisci.get(k).getStawka() + saksofonisci.get(l).getStawka() <= budzet);
-                        int tempSuma = technicy.get(i).getPoziom_umiejetnosci() + wokalisci.get(j).getPoziomUmiejetnosci() + pianisci.get(k).getPoziomUmiejetnosci() + saksofonisci.get(l).getPoziomUmiejetnosci();
+                        int tempSuma = ((Technik)technicy.get(i)).getPoziomUmiejetnosci() + wokalisci.get(j).getPoziomUmiejetnosci() + pianisci.get(k).getPoziomUmiejetnosci() + saksofonisci.get(l).getPoziomUmiejetnosci();
                         boolean czyWiekszeUmiejetnosci = (tempSuma > suma);
 
                         if (czyWBudzecie && czyWiekszeUmiejetnosci) {

@@ -27,7 +27,7 @@ public class Zespol {
     private Saksofonista saksofonista;
     private static WyborAlgorytmu wybor;
 
-    public static void WybierzAlgorytm() {
+    public static void Zespol_WybiierzAlgorytm() {
         System.out.println("\nWybierz algorytm tworzacy zespol:");
         System.out.println("[1] Algorytm naiwny");
         System.out.println("[2] Algorytm dynamiczny");
@@ -207,7 +207,7 @@ public class Zespol {
         else {
             System.out.println("\n-------------------------");
             System.out.println("\nNajbardziej optymalny zespol pod wzgledem ceny oraz poziomu umiejetnosci w stosunku do budzetu wynoszacego: " + budzet);
-            Generator.sendBrief(zespol.getWokalista(), zespol.getPianista(), zespol.getTechnik(), zespol.getSaksofonista());
+            Generator.Generator_sendBrief(zespol.getWokalista(), zespol.getPianista(), zespol.getTechnik(), zespol.getSaksofonista());
 
         }
 

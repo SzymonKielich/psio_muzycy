@@ -6,7 +6,7 @@ import repertuar.Piosenka;
 
 
 public class Pianista extends Muzyk {
-
+	private static final long serialVersionUID = -3586698602335628625L;
 	private String rodzajStatywu;
 	private boolean czySpiewa;
 	private Keyboard keyboard = null;

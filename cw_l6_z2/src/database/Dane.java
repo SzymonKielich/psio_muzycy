@@ -192,7 +192,7 @@ public class Dane {
 
 	public static void Dane_initializeBazaPiosenek() {
 
-		final int p = 16
+		final int p = 16;
 		baza = new Piosenka[p];
 
 		baza[0] = new Piosenka("Cheri cheri lady", "pop", "1982");
