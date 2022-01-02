@@ -2,6 +2,7 @@ package zespol;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import generator.AlgorytmDynamiczny;
@@ -14,6 +15,7 @@ import muzycy.Pianista;
 import muzycy.Saksofonista;
 import muzycy.Wokalista;
 import technika.Technik;
+import wyjatki.*;
 import java.lang.Math;
 import java.util.Scanner;
 
@@ -27,24 +29,48 @@ public class Zespol {
     private Saksofonista saksofonista;
     private static WyborAlgorytmu wybor;
 
-    public static void Zespol_WybiierzAlgorytm() {
+    public static void Zespol_WybiierzAlgorytm() throws IllegalArgumentException {
         System.out.println("\nWybierz algorytm tworzacy zespol:");
         System.out.println("[1] Algorytm naiwny");
         System.out.println("[2] Algorytm dynamiczny");
 
         Scanner skan = new Scanner(System.in);
+        try
+        {
         int opcja = skan.nextInt();
+        
 
-        while (opcja < 1 && opcja > 2) {
-            System.out.println("Wprowadzona powinna zostac liczba 1 albo 2! Sprobuj ponownie:");
-            opcja = skan.nextInt();
+        if (opcja < 1 || opcja > 2) {
+            throw new IllegalArgumentException("Niepoprawny wybor algorytmu!");
         }
 
-        if (opcja == 1)
+        /*if (opcja == 1)
             wybor = new AlgorytmNaiwny();
 
         else
-            wybor = new AlgorytmDynamiczny();
+            wybor = new AlgorytmDynamiczny(); */
+        
+        
+        switch(opcja)
+        {
+        case 1: wybor = new AlgorytmNaiwny();
+        break;
+        case 2: wybor = new AlgorytmDynamiczny();
+        break;
+        default: wybor = null;
+        break;
+        }
+        
+        }
+        catch(InputMismatchException e)
+		{
+			System.out.println("Musi zostac wprowadzona liczba 1 lub 2!"); 
+        	e.printStackTrace();
+		}
+        finally
+        {
+        	skan.close();
+        }
 
     }
 
@@ -72,9 +98,18 @@ public class Zespol {
     }
 
 
-    public static void Zespol_optimalTeam(Technik[] technicytmp, Muzyk[] muzycy, int budzet) {
+    public static void Zespol_optimalTeam(Technik[] technicytmp, Muzyk[] muzycy, int budzet) throws WyjatekNiepoprawnyBudzet, NullPointerException {
 
-        List<Technik> technicy = Arrays.asList(technicytmp);
+        if(budzet%100 != 0)
+        {
+        	throw new WyjatekNiepoprawnyBudzet();
+        }
+		if(wybor==null)
+        {
+        	throw new NullPointerException();
+        }
+		
+		List<Technik> technicy = Arrays.asList(technicytmp);
         List<Wokalista> wokalisci = Zespol_arrayWokalisci(muzycy);
         List<Pianista> pianisci = Zespol_arrayPianisci(muzycy);
         List<Saksofonista> saksofonisci = Zespol_arraySaksofonisci(muzycy);

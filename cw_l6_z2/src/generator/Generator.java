@@ -3,6 +3,7 @@ package generator;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Random;
 
 import instrument.Keyboard;
@@ -13,6 +14,7 @@ import muzycy.Wokalista;
 import repertuar.Piosenka;
 import rider.Rider;
 import technika.Technik;
+import wyjatki.WyjatekNiepoprawnyBudzet;
 import zespol.Zespol;
 import muzycy.Saksofonista;
 import instrument.Instrument;
@@ -64,8 +66,27 @@ public class Generator {
 
 		Generator_sendBrief(wokalista, pianista, technik, saksofonista);
 
-		Zespol.Zespol_WybiierzAlgorytm();
-		Zespol.Zespol_optimalTeam(technicy, muzycy, 2500);
+		try{
+		     Zespol.Zespol_WybiierzAlgorytm();
+		 }
+		 catch(IllegalArgumentException e)
+		 {
+			 System.out.println("Wprowadzona powinna zostac liczba 1 albo 2!");
+			 e.printStackTrace();
+		 }
+		 
+		 
+		try {
+			Zespol.Zespol_optimalTeam(technicy, muzycy, 2500);
+		} catch (WyjatekNiepoprawnyBudzet e) {
+			
+			e.printStackTrace();
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println("Blad, nie wybrano algorytmu");
+			e.printStackTrace();
+		}
 
 
 //		System.out.println("-----------------");
