@@ -35,6 +35,8 @@ public class Generator {
 	static Instrument[] instrument;
 	static Mikrofon[] mikrofony;
 	static Piosenka[] baza;
+	
+	static ArrayList<String> parametersGUI = new ArrayList<String>();
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 
@@ -142,8 +144,37 @@ public static String test(){
 		System.out.println("\u001B[31m" + "Koszt zespolu: " + (Generator_seePrice(wokalista, pianista, saksofonista) + technik.getStawka()) + " zl" + "\u001B[0m");
 		System.out.println("--------------------------------");
 		System.out.println("Repertuar:");
-		Generator_wydrukujRepertuar(wokalista, pianista, saksofonista);
+		
+		
+		
+		
+		parametersGUI.add("Brief koncertu " + wokalista.getImie() + " " + wokalista.getNazwisko() + " przy akompaniamencie " + pianista.getImie() + " " + pianista.getNazwisko() + ", " + saksofonista.getImie() + " " + saksofonista.getNazwisko());
+		parametersGUI.add("--------------------------------");
+		parametersGUI.add("Stawka zespolu: " + Generator_seePrice(wokalista, pianista, saksofonista) + " zl");
+		parametersGUI.add("Umiejetnosci sumaryczne zespolu w skali 0-15: " + (wokalista.getPoziomUmiejetnosci() + pianista.getPoziomUmiejetnosci() + saksofonista.getPoziomUmiejetnosci()));
+		parametersGUI.add("W tym klawiszowiec: " + pianista.getPoziomUmiejetnosci() + "/5 Saksofonista: " + saksofonista.getPoziomUmiejetnosci() + "/5 Wokalista: " + wokalista.getPoziomUmiejetnosci() + "/5");
+		parametersGUI.add("Instrument klawiszowca: " + pianista.getStringKeyboard());
 
+
+		parametersGUI.add("Instrument saksofonisty: " + saksofonista.getStringSaksofon());
+		parametersGUI.add("--------------------------------");
+		parametersGUI.add("Szczegoly dotyczace rideru:");
+		System.out.print("Mikrofon wokalistki: ");
+		wokalista.Wokalista_wyswietlUlubionyMikrofon();
+		parametersGUI.add("Przekaski: " + rider.getPrzekaski());
+		parametersGUI.add("W przypadku wyjazdu, minimalny standard hotelu: " + rider.getHotel());
+		parametersGUI.add("Minimalne wymiary sceny: " + rider.getStageSize());
+		parametersGUI.add("Czy potrzebni handzi? " + rider.isHandsNeeded());
+		parametersGUI.add("Technik: " + technik.getImie() + " " + technik.getNazwisko());
+		parametersGUI.add("Poziom umiejetnosci technika: " + technik.getPoziomUmiejetnosci() + "/5");
+		parametersGUI.add("Preferowany stol: " + technik.getPreferowanyStol());
+		parametersGUI.add("Stawka technika: " + technik.getStawka() + " zl");
+		parametersGUI.add("--------------------------------");
+		parametersGUI.add("Koszt zespolu: " + (Generator_seePrice(wokalista, pianista, saksofonista) + technik.getStawka()) + " zl");
+		parametersGUI.add("--------------------------------");
+		parametersGUI.add("Repertuar:");
+		
+		Generator_wydrukujRepertuar(wokalista, pianista, saksofonista);
 
 	}
 
@@ -176,9 +207,11 @@ public static String test(){
 		for (int i = 0; i < repertuar.size(); i++) {
 
 			System.out.println(repertuar.get(i));
-
+			parametersGUI.add(repertuar.get(i).toString());
 
 		}
+		
+		
 
 
 	}
@@ -395,6 +428,14 @@ public static String test(){
 	public static void setBaza(Piosenka[] baza) {
 		Generator.baza = baza;
 	}
+	public static ArrayList<String> getParametersGUI() {
+		return parametersGUI;
+	}
+	public void setParametersGUI(ArrayList<String> parametersGUI) {
+		this.parametersGUI = parametersGUI;
+	}
 
+	
+	
 
 }

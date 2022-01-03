@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.swing.*;
 
@@ -35,7 +36,7 @@ public class GUI {
             WyborAlgorytmu wybor = new AlgorytmNaiwny();
             Generator.idk(wybor);
             frame.dispose();
-            GUI2();
+            GUI3(Generator.getParametersGUI());
         }
 
     }
@@ -51,7 +52,7 @@ public class GUI {
             WyborAlgorytmu wybor = new AlgorytmDynamiczny();
             Generator.idk(wybor);
             frame.dispose();
-            GUI2();
+            GUI3(Generator.getParametersGUI());
         }
     }
 
@@ -118,6 +119,46 @@ public class GUI {
         frame.setVisible(true);
         frame.setResizable(false);
 
+
+    }
+    
+    public static void GUI3(ArrayList<String> parametersGUI) {
+    	
+
+        JFrame frame = new JFrame("Wybór algorytmu:");
+        Panel p = new Panel();
+        p.setLayout(new BorderLayout());
+
+        frame.getContentPane().add(p);
+
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+
+        frame.setSize(1150,640);
+
+        frame.setVisible(true);
+        frame.setResizable(true);
+    	
+    	ArrayList<JLabel> output = new ArrayList<JLabel>();
+
+
+        JTextArea textArea = new JTextArea();
+        textArea.setEditable(false);
+        textArea.setLineWrap(true);
+        textArea.setOpaque(false);
+
+        p.add(textArea, BorderLayout.CENTER);
+
+        for(int i = 0; i < Generator.getParametersGUI().size(); i++) {
+
+        	textArea.append(Generator.getParametersGUI().get(i) + "\n");
+        	
+        }
+        
+        
+        
 
     }
 
