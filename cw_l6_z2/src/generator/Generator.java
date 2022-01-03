@@ -42,8 +42,7 @@ public class Generator {
 		GUI.GUI();
 
 		Dane.Dane_initializeDatabase();
-//		TextIO.TextIO_zresetujDane();
-
+	//	TextIO.TextIO_zresetujDane();
 
 		TextIO.TextIO_pobierzDane();
 
@@ -77,7 +76,7 @@ public class Generator {
 		 }
 		 
 		 
-		try {
+	/*	try {
 			Zespol.Zespol_optimalTeam(technicy, muzycy, 2500);
 		} catch (WyjatekNiepoprawnyBudzet e) {
 			
@@ -87,7 +86,8 @@ public class Generator {
 		{
 			System.out.println("Blad, nie wybrano algorytmu");
 			e.printStackTrace();
-		}
+		}*/
+
 
 
 //		System.out.println("-----------------");
@@ -98,7 +98,19 @@ public class Generator {
 
 		TextIO.TextIO_zapiszDane();
 	}
+public static void idk(WyborAlgorytmu wybor)
+{
 
+	try {
+		Zespol.Zespol_optimalTeam(technicy, muzycy, 7000, wybor);
+	} catch (WyjatekNiepoprawnyBudzet e) {
+		e.printStackTrace();
+	}
+}
+
+public static String test(){
+		return "test";
+}
 
 	//generowanie propozycji koncertu
 	public static void Generator_sendBrief(Wokalista wokalista, Pianista pianista, Technik technik, Saksofonista saksofonista) {
@@ -179,7 +191,7 @@ public class Generator {
 
 		return price;
 	}
-
+	
 
 	//przydzielenie technika w zależności od budżetu
 	public static Technik Generator_generateTechnik(Wokalista wokalista, Pianista pianista, Saksofonista saksofonista) {

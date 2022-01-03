@@ -34,21 +34,21 @@ public class Zespol {
         System.out.println("[1] Algorytm naiwny");
         System.out.println("[2] Algorytm dynamiczny");
 
-        Scanner skan = new Scanner(System.in);
+       Scanner skan = new Scanner(System.in);
         try
         {
         int opcja = skan.nextInt();
-        
+
 
         if (opcja < 1 || opcja > 2) {
             throw new IllegalArgumentException("Niepoprawny wybor algorytmu!");
         }
-
-        /*if (opcja == 1)
+/*
+        if (opcja == 1)
             wybor = new AlgorytmNaiwny();
 
         else
-            wybor = new AlgorytmDynamiczny(); */
+            wybor = new AlgorytmDynamiczny();*/
         
         
         switch(opcja)
@@ -117,8 +117,9 @@ public class Zespol {
 
         Zespol_showOptimalTeam(zespol, budzet);
 
-
     }
+
+
 
     /*
 	public static Zespol wybierzZespol( List <Technik> technicy , List <Wokalista> wokalisci , List <Pianista> pianisci , List <Saksofonista> saksofonisci , int budzet )
