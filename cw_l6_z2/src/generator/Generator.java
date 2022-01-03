@@ -1,5 +1,6 @@
 package generator;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,8 +23,7 @@ import sprzet.Mikrofon;
 import repertuar.Krytyk;
 import database.Dane;
 import database.TextIO;
-
-
+import GUI.GUI;
 
 public class Generator {
 
@@ -36,9 +36,10 @@ public class Generator {
 	static Mikrofon[] mikrofony;
 	static Piosenka[] baza;
 
-
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 
+
+		GUI.GUI();
 
 		Dane.Dane_initializeDatabase();
 //		TextIO.TextIO_zresetujDane();

@@ -98,7 +98,7 @@ public class Zespol {
     }
 
 
-    public static void Zespol_optimalTeam(Technik[] technicytmp, Muzyk[] muzycy, int budzet) throws WyjatekNiepoprawnyBudzet, NullPointerException {
+    public static void Zespol_optimalTeam(Technik[] technicytmp, Muzyk[] muzycy, int budzet, WyborAlgorytmu wybor) throws WyjatekNiepoprawnyBudzet, NullPointerException {
 
         if(budzet%100 != 0)
         {
