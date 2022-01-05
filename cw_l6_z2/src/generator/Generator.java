@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Random;
 
+import javax.swing.JLabel;
+
 import instrument.Keyboard;
 import instrument.Saksofon;
 import muzycy.Muzyk;
@@ -35,13 +37,15 @@ public class Generator {
 	static Instrument[] instrument;
 	static Mikrofon[] mikrofony;
 	static Piosenka[] baza;
+	static int kwota;
+	static WyborAlgorytmu wyborAlgorytmu;
 	
 	static ArrayList<String> parametersGUI = new ArrayList<String>();
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 
 
-		GUI.GUI();
+		GUI.GUI_Enter_Value();
 
 		Dane.Dane_initializeDatabase();
 	//	TextIO.TextIO_zresetujDane();
@@ -60,13 +64,13 @@ public class Generator {
 //		Dane.Dane_wydrukujMuzykow(muzycy);
 
 
-		Wokalista wokalista = (Wokalista) Generator_generateMuzyk("class muzycy.Wokalista");
-		Pianista pianista = (Pianista) Generator_generateMuzyk("class muzycy.Pianista");
-		Saksofonista saksofonista = (Saksofonista) Generator_generateMuzyk("class muzycy.Saksofonista");
-		Technik technik = Generator_generateTechnik(wokalista, pianista, saksofonista);
-
-
-		Generator_sendBrief(wokalista, pianista, technik, saksofonista);
+//		Wokalista wokalista = (Wokalista) Generator_generateMuzyk("class muzycy.Wokalista");
+//		Pianista pianista = (Pianista) Generator_generateMuzyk("class muzycy.Pianista");
+//		Saksofonista saksofonista = (Saksofonista) Generator_generateMuzyk("class muzycy.Saksofonista");
+//		Technik technik = Generator_generateTechnik(wokalista, pianista, saksofonista);
+//
+//
+//		Generator_sendBrief(wokalista, pianista, technik, saksofonista);
 
 		try{
 		     Zespol.Zespol_WybiierzAlgorytm();
@@ -104,8 +108,12 @@ public static void idk(WyborAlgorytmu wybor)
 {
 
 	try {
-		Zespol.Zespol_optimalTeam(technicy, muzycy, 7000, wybor);
+		Zespol.Zespol_optimalTeam(technicy, muzycy, Generator.getKwota(), wybor);
 	} catch (WyjatekNiepoprawnyBudzet e) {
+		
+		GUI.setLabel(new JLabel("esefgs"));
+		GUI.GUI_Enter_Value();
+		parametersGUI.add("Kwota powinna być wielokrotnością 100. Spróbuj ponownie.");
 		e.printStackTrace();
 	}
 }
@@ -159,8 +167,6 @@ public static String test(){
 		parametersGUI.add("Instrument saksofonisty: " + saksofonista.getStringSaksofon());
 		parametersGUI.add("--------------------------------");
 		parametersGUI.add("Szczegoly dotyczace rideru:");
-		System.out.print("Mikrofon wokalistki: ");
-		wokalista.Wokalista_wyswietlUlubionyMikrofon();
 		parametersGUI.add("Przekaski: " + rider.getPrzekaski());
 		parametersGUI.add("W przypadku wyjazdu, minimalny standard hotelu: " + rider.getHotel());
 		parametersGUI.add("Minimalne wymiary sceny: " + rider.getStageSize());
@@ -390,11 +396,26 @@ public static String test(){
 
 // GETTERS & SETTERS
 
+	
+	
+	
 	public static Muzyk[] getMuzycy() {
 		return muzycy;
 	}
 
 
+	public static int getKwota() {
+		return kwota;
+	}
+	public static void setKwota(int kwota) {
+		Generator.kwota = kwota;
+	}
+	public static WyborAlgorytmu getWyborAlgorytmu() {
+		return wyborAlgorytmu;
+	}
+	public static void setWyborAlgorytmu(WyborAlgorytmu wyborAlgorytmu) {
+		Generator.wyborAlgorytmu = wyborAlgorytmu;
+	}
 	public static void setMuzycy(Muzyk[] muzycy) {
 		Generator.muzycy = muzycy;
 	}

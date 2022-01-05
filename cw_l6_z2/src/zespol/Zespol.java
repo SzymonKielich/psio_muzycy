@@ -114,7 +114,11 @@ public class Zespol {
         List<Pianista> pianisci = Zespol_arrayPianisci(muzycy);
         List<Saksofonista> saksofonisci = Zespol_arraySaksofonisci(muzycy);
         Zespol zespol = wybor.Algorytm(technicy, wokalisci, pianisci, saksofonisci, budzet);
-
+        if(zespol == null) {
+        	wybor = new AlgorytmNaiwny();
+        	zespol = wybor.Algorytm(technicy, wokalisci, pianisci, saksofonisci, budzet);
+        }
+        	
         Zespol_showOptimalTeam(zespol, budzet);
 
     }
@@ -237,9 +241,10 @@ public class Zespol {
 
     public static void Zespol_showOptimalTeam(Zespol zespol, int budzet) {
 
-        if (zespol == null)
+        if (zespol == null) {
             System.out.println("Z danej grupy nie mozna utworzyc zespolu w twoim budzecie!");
-
+        	Generator.getParametersGUI().add("Z danej grupy nie mozna utworzyc zespolu w twoim budzecie!");
+        }
         else {
             System.out.println("\n-------------------------");
             System.out.println("\nNajbardziej optymalny zespol pod wzgledem ceny oraz poziomu umiejetnosci w stosunku do budzetu wynoszacego: " + budzet);

@@ -15,6 +15,7 @@ import muzycy.Pianista;
 import muzycy.Saksofonista;
 import muzycy.Wokalista;
 import technika.Technik;
+import wyjatki.WyjatekNiepoprawnyBudzet;
 import zespol.Zespol;
 import generator.Generator;
 
@@ -22,7 +23,8 @@ public class GUI {
 
     static JButton button1;
     static JButton button2;
-
+    static JTextField inputField;
+    static JLabel label;
 
     static class Button1 implements ActionListener{
 
@@ -33,8 +35,9 @@ public class GUI {
         }
 
         public void actionPerformed(ActionEvent e){
-            WyborAlgorytmu wybor = new AlgorytmNaiwny();
-            Generator.idk(wybor);
+
+            Generator.setWyborAlgorytmu(new AlgorytmNaiwny());
+            Generator.idk(Generator.getWyborAlgorytmu());
             frame.dispose();
             GUI3(Generator.getParametersGUI());
         }
@@ -49,8 +52,9 @@ public class GUI {
         }
 
         public void actionPerformed(ActionEvent e){
-            WyborAlgorytmu wybor = new AlgorytmDynamiczny();
-            Generator.idk(wybor);
+      
+            Generator.setWyborAlgorytmu(new AlgorytmDynamiczny());
+            Generator.idk(Generator.getWyborAlgorytmu());
             frame.dispose();
             GUI3(Generator.getParametersGUI());
         }
@@ -92,35 +96,7 @@ public class GUI {
 
     }
 
-    public static void GUI2(){
-        JFrame frame = new JFrame("Dane");
-        JPanel panel1 = new JPanel();
-        JPanel panel2 = new JPanel();
 
-        frame.getContentPane().add(panel1);
-        frame.getContentPane().add(panel2);
-
-        ArrayList<JLabel> labels = new ArrayList<>();
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        panel1.setLayout(new GridLayout(4,2));
-
-
-        for(int i=0; i<8; i++){
-            labels.add(i, new JLabel());
-            panel1.add(labels.get(i));
-        }
-
-
-        frame.pack();
-        frame.setSize(400,400);
-
-        frame.setVisible(true);
-        frame.setResizable(false);
-
-
-    }
     
     public static void GUI3(ArrayList<String> parametersGUI) {
     	
@@ -161,5 +137,120 @@ public class GUI {
         
 
     }
+    static class submitButton implements ActionListener{
 
+        JFrame frame;
+
+        public submitButton(JFrame frame){
+            this.frame = frame;
+        }
+
+        public void actionPerformed(ActionEvent e){
+            
+        	String input = (inputField.getText());
+        	System.out.println("Wpisano kwotę " + input);
+        	Generator.setKwota(Integer.parseInt(input.toString()));
+        	System.out.println("Ustawiono kwotę na: " + Generator.getKwota());
+        	try {
+        		validateKwota(Generator.getKwota());
+        		GUI();
+        	} catch (WyjatekNiepoprawnyBudzet wnb) {
+        		GUI.getLabel().setText("Kwota musi być wielokrotnością 100!");
+        	}
+        	
+        }
+
+    }
+    
+    public static void GUI_Enter_Value() {
+    	
+        JFrame frame = new JFrame("Wpisz kwotę, którą chcesz zapłacić za zespół:");
+        JPanel panel1 = new JPanel();
+        label = new JLabel("Wpisz kwotę, którą chcesz zapłacić za zespół:");
+        JLabel empty_label = new JLabel();
+
+        inputField = new JTextField(16);
+        
+        frame.getContentPane().add(BorderLayout.CENTER, panel1);
+
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        JButton submitButton = new JButton("Wylicz");
+
+        panel1.add(label);
+        panel1.add(inputField);
+        panel1.add(submitButton);
+        
+        submitButton.addActionListener(new submitButton(frame));
+        
+
+        frame.pack();
+        frame.setSize(400,400);
+
+        frame.setVisible(true);
+        frame.setResizable(false);
+    	
+    	
+    	
+    	
+    	
+    }
+    
+
+    
+    
+    public static void GUI2(){
+        JFrame frame = new JFrame("Dane");
+        JPanel panel1 = new JPanel();
+        JPanel panel2 = new JPanel();
+
+        frame.getContentPane().add(panel1);
+        frame.getContentPane().add(panel2);
+
+        ArrayList<JLabel> labels = new ArrayList<>();
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        panel1.setLayout(new GridLayout(4,2));
+
+
+        for(int i=0; i<8; i++){
+            labels.add(i, new JLabel());
+            panel1.add(labels.get(i));
+        }
+
+
+        frame.pack();
+        frame.setSize(400,400);
+
+        frame.setVisible(true);
+        frame.setResizable(false);
+
+
+    }
+
+
+
+	public static JLabel getLabel() {
+		return label;
+	}
+
+
+
+	public static void setLabel(JLabel label) {
+		GUI.label = label;
+	}
+
+    public static boolean validateKwota(int Kwota) throws WyjatekNiepoprawnyBudzet {
+    	
+    	if(Kwota % 100 != 0) {
+    		throw new WyjatekNiepoprawnyBudzet();
+    	}
+    	
+    	return true;
+    }
+    
+    
 }
