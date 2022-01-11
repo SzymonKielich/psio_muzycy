@@ -1,16 +1,12 @@
 package generator;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.Random;
 
 import javax.swing.JLabel;
 
-import instrument.Keyboard;
-import instrument.Saksofon;
 import muzycy.Muzyk;
 import muzycy.Pianista;
 import muzycy.Wokalista;
@@ -22,10 +18,9 @@ import zespol.Zespol;
 import muzycy.Saksofonista;
 import instrument.Instrument;
 import sprzet.Mikrofon;
-import repertuar.Krytyk;
 import database.Dane;
 import database.TextIO;
-import GUI.GUI;
+import GUI.wybor_algorytmu;
 
 public class Generator {
 
@@ -45,10 +40,11 @@ public class Generator {
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 
 
-		GUI.GUI_Enter_Value();
+		//wybor_algorytmu.GUI_Enter_Value();
+		wybor_algorytmu.GUI();
 
 		Dane.Dane_initializeDatabase();
-	//	TextIO.TextIO_zresetujDane();
+		TextIO.TextIO_zresetujDane();
 
 		TextIO.TextIO_pobierzDane();
 
@@ -111,8 +107,9 @@ public static void idk(WyborAlgorytmu wybor)
 		Zespol.Zespol_optimalTeam(technicy, muzycy, Generator.getKwota(), wybor);
 	} catch (WyjatekNiepoprawnyBudzet e) {
 		
-		GUI.setLabel(new JLabel("esefgs"));
-		GUI.GUI_Enter_Value();
+		wybor_algorytmu.setLabel(new JLabel("esefgs"));
+		wybor_algorytmu.GUI();
+		//wybor_algorytmu.GUI_Enter_Value();
 		parametersGUI.add("Kwota powinna być wielokrotnością 100. Spróbuj ponownie.");
 		e.printStackTrace();
 	}
