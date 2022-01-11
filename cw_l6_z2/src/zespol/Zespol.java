@@ -34,21 +34,21 @@ public class Zespol {
         System.out.println("[1] Algorytm naiwny");
         System.out.println("[2] Algorytm dynamiczny");
 
-        Scanner skan = new Scanner(System.in);
+       Scanner skan = new Scanner(System.in);
         try
         {
         int opcja = skan.nextInt();
-        
+
 
         if (opcja < 1 || opcja > 2) {
             throw new IllegalArgumentException("Niepoprawny wybor algorytmu!");
         }
-
-        /*if (opcja == 1)
+/*
+        if (opcja == 1)
             wybor = new AlgorytmNaiwny();
 
         else
-            wybor = new AlgorytmDynamiczny(); */
+            wybor = new AlgorytmDynamiczny();*/
         
         
         switch(opcja)
@@ -98,7 +98,7 @@ public class Zespol {
     }
 
 
-    public static void Zespol_optimalTeam(Technik[] technicytmp, Muzyk[] muzycy, int budzet) throws WyjatekNiepoprawnyBudzet, NullPointerException {
+    public static void Zespol_optimalTeam(Technik[] technicytmp, Muzyk[] muzycy, int budzet, WyborAlgorytmu wybor) throws WyjatekNiepoprawnyBudzet, NullPointerException {
 
         if(budzet%100 != 0)
         {
@@ -114,11 +114,16 @@ public class Zespol {
         List<Pianista> pianisci = Zespol_arrayPianisci(muzycy);
         List<Saksofonista> saksofonisci = Zespol_arraySaksofonisci(muzycy);
         Zespol zespol = wybor.Algorytm(technicy, wokalisci, pianisci, saksofonisci, budzet);
-
+        if(zespol == null) {
+        	wybor = new AlgorytmNaiwny();
+        	zespol = wybor.Algorytm(technicy, wokalisci, pianisci, saksofonisci, budzet);
+        }
+        	
         Zespol_showOptimalTeam(zespol, budzet);
 
-
     }
+
+
 
     /*
 	public static Zespol wybierzZespol( List <Technik> technicy , List <Wokalista> wokalisci , List <Pianista> pianisci , List <Saksofonista> saksofonisci , int budzet )
@@ -236,9 +241,10 @@ public class Zespol {
 
     public static void Zespol_showOptimalTeam(Zespol zespol, int budzet) {
 
-        if (zespol == null)
+        if (zespol == null) {
             System.out.println("Z danej grupy nie mozna utworzyc zespolu w twoim budzecie!");
-
+        	Generator.getParametersGUI().add("Z danej grupy nie mozna utworzyc zespolu w twoim budzecie!");
+        }
         else {
             System.out.println("\n-------------------------");
             System.out.println("\nNajbardziej optymalny zespol pod wzgledem ceny oraz poziomu umiejetnosci w stosunku do budzetu wynoszacego: " + budzet);

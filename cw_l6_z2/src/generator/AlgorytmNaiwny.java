@@ -11,6 +11,9 @@ import java.util.List;
 public class AlgorytmNaiwny implements WyborAlgorytmu {
     @Override
     public Zespol Algorytm(List<Technik> technicy, List<Wokalista> wokalisci, List<Pianista> pianisci, List<Saksofonista> saksofonisci, int budzet) {
+    	
+    	
+    	
         int iT = 0, iW = 0, iP = 0, iS = 0, suma = 0;
 
         for (int i = 0; i < technicy.size(); i++)
