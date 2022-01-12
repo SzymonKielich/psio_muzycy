@@ -28,6 +28,7 @@ public class Zespol {
     private Pianista pianista;
     private Saksofonista saksofonista;
     private static WyborAlgorytmu wybor;
+    private static Zespol tmp;
 
     public static void Zespol_WybiierzAlgorytm() throws IllegalArgumentException {
         System.out.println("\nWybierz algorytm tworzacy zespol:");
@@ -96,6 +97,8 @@ public class Zespol {
     public Saksofonista getSaksofonista() {
         return saksofonista;
     }
+
+    public static Zespol getZespol() {return tmp; }
 
 
     public static void Zespol_optimalTeam(Technik[] technicytmp, Muzyk[] muzycy, int budzet, WyborAlgorytmu wybor) throws WyjatekNiepoprawnyBudzet, NullPointerException {
@@ -240,9 +243,10 @@ public class Zespol {
     }
 
     public static void Zespol_showOptimalTeam(Zespol zespol, int budzet) {
-
+        tmp = zespol;
         if (zespol == null) {
             System.out.println("Z danej grupy nie mozna utworzyc zespolu w twoim budzecie!");
+
         	Generator.getParametersGUI().add("Z danej grupy nie mozna utworzyc zespolu w twoim budzecie!");
         }
         else {
@@ -254,6 +258,7 @@ public class Zespol {
 
 
     }
+
 
 
 }

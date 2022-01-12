@@ -10,6 +10,7 @@ import generator.AlgorytmDynamiczny;
 import generator.AlgorytmNaiwny;
 import wyjatki.WyjatekNiepoprawnyBudzet;
 import generator.Generator;
+import  zespol.Zespol;
 
 public class wybor_algorytmu {
 
@@ -82,7 +83,8 @@ public class wybor_algorytmu {
                                     Generator.getKwota()+"\nWybrano : " + temp.getText());
                             Generator.setWyborAlgorytmu(new AlgorytmDynamiczny());
                             Generator.idk(Generator.getWyborAlgorytmu());
-                            wyswietlanie.Wyswietlenie_brief(Generator.getParametersGUI());
+                            //wyswietlanie.Wyswietlenie_brief(Generator.getParametersGUI());
+                            wyswietlanie.wyswietlanie2(Zespol.getZespol());
                         }
                         else
                         {
@@ -91,7 +93,8 @@ public class wybor_algorytmu {
                             Generator.setWyborAlgorytmu(new AlgorytmDynamiczny());
                             Generator.idk(Generator.getWyborAlgorytmu());
                             frame.dispose();
-                            wyswietlanie.Wyswietlenie_brief(Generator.getParametersGUI());
+                            //wyswietlanie.Wyswietlenie_brief(Generator.getParametersGUI());
+                            wyswietlanie.wyswietlanie2(Zespol.getZespol());
                         }
                     }
                 }
@@ -186,7 +189,7 @@ public class wybor_algorytmu {
         submitButton.setSize(100,50);
 
         inputField.setBounds(150,60,330,30);
-        label.setBounds(220,120,250,30);
+        label.setBounds(200,120,400,30);
 
         radiobutton1.setBounds(120,175,200,30);
         radiobutton2.setBounds(320,175,200,30);

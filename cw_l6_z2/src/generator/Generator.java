@@ -149,7 +149,8 @@ public static String test(){
 		System.out.println("\u001B[31m" + "Koszt zespolu: " + (Generator_seePrice(wokalista, pianista, saksofonista) + technik.getStawka()) + " zl" + "\u001B[0m");
 		System.out.println("--------------------------------");
 		System.out.println("Repertuar:");
-		
+
+
 		
 		
 		
@@ -453,7 +454,5 @@ public static String test(){
 		this.parametersGUI = parametersGUI;
 	}
 
-	
-	
 
 }
