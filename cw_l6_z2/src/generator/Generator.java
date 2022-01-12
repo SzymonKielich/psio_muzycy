@@ -25,6 +25,7 @@ import sprzet.Mikrofon;
 import repertuar.Krytyk;
 import database.Dane;
 import database.TextIO;
+import GUI.EkranPoczatkowy;
 import GUI.GUI;
 
 public class Generator {
@@ -44,7 +45,7 @@ public class Generator {
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 
-
+		EkranPoczatkowy ekranpoczatkowy = new EkranPoczatkowy();
 		GUI.GUI_Enter_Value();
 
 		Dane.Dane_initializeDatabase();
