@@ -14,16 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/GUI/administratorIcon.jpg</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Desktop/administratorIcon.jpg</locationURI>
-		</link>
-		<link>
-			<name>src/GUI/generatorIcon.jpg</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/Desktop/generatorIcon.jpg</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

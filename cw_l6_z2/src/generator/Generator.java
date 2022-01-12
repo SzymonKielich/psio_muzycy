@@ -45,10 +45,8 @@ public class Generator {
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 
-
-		EkranPoczatkowy start = new EkranPoczatkowy(); 
-//		GUI.GUI_Enter_Value();
-
+		EkranPoczatkowy ekranpoczatkowy = new EkranPoczatkowy();
+		GUI.GUI_Enter_Value();
 
 		Dane.Dane_initializeDatabase();
 	//	TextIO.TextIO_zresetujDane();
