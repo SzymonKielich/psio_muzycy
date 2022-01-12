@@ -20,7 +20,8 @@ public class EkranPoczatkowy {
 
 	class ReakcjaNaButtonPanelAdministracyjny implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			// todo
+			LogowanieGUI g = new LogowanieGUI();
+			g.logowanie();
 			System.out.println("*panel otwiera sie*");
 		}
 	}

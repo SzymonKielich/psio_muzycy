@@ -13,6 +13,7 @@ import instrument.Instrument;
 import muzycy.Muzyk;
 import repertuar.Piosenka;
 import sprzet.Mikrofon;
+import administracja.User;
 
 public class TextIO {
 
@@ -37,6 +38,7 @@ public class TextIO {
 		Generator.setMikrofony((Mikrofon[]) TextIO_odczytajZPliku("dbMikrofony.txt"));
 		Generator.setBaza((Piosenka[]) TextIO_odczytajZPliku("dbPiosenka.txt"));
 		Generator.setInstrument((Instrument[]) TextIO_odczytajZPliku("dbInstrument.txt"));
+		//Dane.setUzytkownicy((ArrayList<User>) TextIO_odczytZPliku("dbUzytkownicy.txt")); <- plik musi zostac stworzony
 
 	}
 
@@ -50,6 +52,7 @@ public class TextIO {
 		TextIO_zapiszDoPliku(Generator.getInstrument(), "dbInstrument.txt");
 		TextIO_zapiszDoPliku(Generator.getMikrofony(), "dbMikrofony.txt");
 		TextIO_zapiszDoPliku(Generator.getBaza(), "dbPiosenka.txt");
+		TextIO_zapiszDoPliku(Dane.getUzytkownicy(), "dbUzytkownicy.txt");
 
 	}
 
@@ -71,6 +74,24 @@ public class TextIO {
 			ex.printStackTrace();
 		}
 	}
+	
+	public static void TextIO_zapiszDoPliku(ArrayList<User> serObj, String filename) {
+
+		File file = new File(filename);
+
+		try {
+
+			FileOutputStream fileOut = new FileOutputStream(file.getAbsolutePath());
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(serObj);
+			fileOut.close();
+			objectOut.close();
+			System.out.println("PomyĹ›lnie zapisano " + filename);
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 
 	public static Object[] TextIO_odczytajZPliku(String filename) throws ClassNotFoundException, IOException {
 
@@ -82,6 +103,18 @@ public class TextIO {
 		fileIn.close();
 		objectIn.close();
 		return muzycy;
+	}
+	
+	public static Object TextIO_odczytZPliku(String filename) throws ClassNotFoundException, IOException {
+
+		File file = new File(filename);
+		Object obiekt;
+		FileInputStream fileIn = new FileInputStream(file.getAbsolutePath());
+		ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+		obiekt = (Object) objectIn.readObject();
+		fileIn.close();
+		objectIn.close();
+		return obiekt;
 	}
 
 

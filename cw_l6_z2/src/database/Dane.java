@@ -13,7 +13,9 @@ import rider.Rider;
 import sprzet.Mikrofon;
 import technika.Technik;
 import muzycy.*;
+import administracja.User;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import generator.Generator;
@@ -28,6 +30,7 @@ public class Dane {
 	static Rider bogatszy;
 	static Rider najbogatszy;
 	static Technik[] technicy;
+	static ArrayList<User> uzytkownicy = new ArrayList<User>();
 
 
 	public static void Dane_initializeDatabase() {
@@ -36,6 +39,8 @@ public class Dane {
 		Dane_initializeMuzycy();
 		Dane_initializeRider();
 		Dane_initializeTechnik();
+		
+		Dane_initializeUzytkownicy();
 
 
 		//hotfix
@@ -236,6 +241,13 @@ public class Dane {
 
 	}
 
+	public static void Dane_initializeUzytkownicy()
+		{
+			uzytkownicy.add(new User("mark654","ducks"));
+			uzytkownicy.add(new User("steve754","ducks"));
+			uzytkownicy.add(new User("tom954","ducks"));
+		} 
+
 
 	public static void Dane_przydzielInstrumenty() {
 
@@ -328,6 +340,14 @@ public class Dane {
 
 	public static void setBaza(Piosenka[] baza) {
 		Dane.baza = baza;
+	}
+	
+	public static ArrayList<User> getUzytkownicy() {
+		return uzytkownicy;
+	}
+
+	public static void setUzytkownicy(ArrayList<User> uzytkownicy) {
+		Dane.uzytkownicy = uzytkownicy;
 	}
 
 }
