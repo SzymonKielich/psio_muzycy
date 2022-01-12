@@ -13,6 +13,7 @@ public class EkranPoczatkowy {
 
 	class ReakcjaNaButtonGenerator implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+
 			// todo
 			System.out.println("*generator otwiera sie*");
 		}
@@ -101,5 +102,6 @@ public class EkranPoczatkowy {
 
 		buttonGenerator.addActionListener(new ReakcjaNaButtonGenerator());
 		buttonPanelAdministracyjny.addActionListener(new ReakcjaNaButtonPanelAdministracyjny());
+
 	}
 }
