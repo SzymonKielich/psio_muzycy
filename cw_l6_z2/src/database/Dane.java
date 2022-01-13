@@ -134,7 +134,7 @@ public class Dane {
 		muzycy[59] = new Saksofonista("Miłosz", "Maciejewski", 3, 500, true, Dane_wylosujRepertuar(baza));
 
 		for (int i=0; i<60; i++)
-			muzycyLista.add(muzycy[i]);
+			Generator.getMuzycyLista().add(muzycy[i]);
 
 		Dane_initializeInstrument();
 		Dane_initializeMikrofon();

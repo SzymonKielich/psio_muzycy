@@ -31,6 +31,7 @@ import GUI.GUI;
 public class Generator {
 
 	static Muzyk[] muzycy;
+	static ArrayList<Muzyk> muzycyLista = new ArrayList<>();
 	static Rider podstawowy;
 	static Rider bogatszy;
 	static Rider najbogatszy;
@@ -48,8 +49,8 @@ public class Generator {
 		EkranPoczatkowy start = new EkranPoczatkowy();
 //		GUI.GUI_Enter_Value();
 
-		Dane.Dane_initializeDatabase();
-		TextIO.TextIO_zresetujDane();
+//		Dane.Dane_initializeDatabase();
+//		TextIO.TextIO_zresetujDane();
 
 		TextIO.TextIO_pobierzDane();
 
@@ -398,10 +399,26 @@ public static String test(){
 // GETTERS & SETTERS
 
 	
-	
+
+	public static void pobierzListeDoTablicy() {
+		final int n=muzycyLista.size();
+		muzycy = new Muzyk[n];
+		for (int i=0; i<n; i++)
+			muzycy[i] = muzycyLista.get(i);
+	}
+
+	public static void pobierzTabliceDoListy() {
+		final int n=muzycy.length;
+		muzycyLista.clear();
+		 for (int i=0; i<n; i++)
+			 muzycyLista.add(muzycy[i]);
+	}
 	
 	public static Muzyk[] getMuzycy() {
 		return muzycy;
+	}
+	public static ArrayList<Muzyk> getMuzycyLista() {
+		return muzycyLista;
 	}
 
 
@@ -419,6 +436,9 @@ public static String test(){
 	}
 	public static void setMuzycy(Muzyk[] muzycy) {
 		Generator.muzycy = muzycy;
+	}
+	public static void setMuzycyLista(ArrayList muzycyLista) {
+		Generator.muzycyLista = muzycyLista;
 	}
 
 

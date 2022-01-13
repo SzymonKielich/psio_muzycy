@@ -34,6 +34,7 @@ public class TextIO {
 
 		//metoda pobierajaca dane z odpowiednich txt
 		Generator.setMuzycy((Muzyk[]) TextIO_odczytajZPliku("dbMuzycy.txt"));
+		Generator.pobierzTabliceDoListy();
 		Generator.setMikrofony((Mikrofon[]) TextIO_odczytajZPliku("dbMikrofony.txt"));
 		Generator.setBaza((Piosenka[]) TextIO_odczytajZPliku("dbPiosenka.txt"));
 		Generator.setInstrument((Instrument[]) TextIO_odczytajZPliku("dbInstrument.txt"));
@@ -46,6 +47,7 @@ public class TextIO {
 		//metoda zapisujaca aktualny stan wszystkich obiektów
 		System.out.println("---------------------");
 		System.out.println("Zapisywanie bazy danych...");
+		Generator.pobierzListeDoTablicy();
 		TextIO_zapiszDoPliku(Generator.getMuzycy(), "dbMuzycy.txt");
 		TextIO_zapiszDoPliku(Generator.getInstrument(), "dbInstrument.txt");
 		TextIO_zapiszDoPliku(Generator.getMikrofony(), "dbMikrofony.txt");

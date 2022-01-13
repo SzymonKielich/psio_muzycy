@@ -1,5 +1,6 @@
 package GUI.PanelAdministracyjny.Operacje.Dodaj;
 
+import generator.Generator;
 import muzycy.Wokalista;
 import repertuar.Piosenka;
 
@@ -163,7 +164,7 @@ public class DodajWokaliste implements JakiMuzyk, ActionListener {
     class PrzyciskDodaj implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            database.Dane.getMuzycyLista().add(new Wokalista(IMIE, NAZWISKO, POZIOMUMIEJETNOSCI, STAWKA, SKALAPOCZATEK, SKALAKONIEC, REPERTUAR));
+            Generator.getMuzycyLista().add(new Wokalista(IMIE, NAZWISKO, POZIOMUMIEJETNOSCI, STAWKA, SKALAPOCZATEK, SKALAKONIEC, REPERTUAR));
             komunikat.setText("Wokalista dodany pomyślnie!");
         }
     }

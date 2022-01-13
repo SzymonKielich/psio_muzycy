@@ -1,5 +1,6 @@
 package GUI.PanelAdministracyjny.Operacje.Dodaj;
 
+import generator.Generator;
 import muzycy.Pianista;
 import repertuar.Piosenka;
 
@@ -167,7 +168,7 @@ public class DodajPianiste implements JakiMuzyk, ActionListener {
     class PrzyciskDodaj implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            database.Dane.getMuzycyLista().add(new Pianista(IMIE, NAZWISKO, POZIOMUMIEJETNOSCI, STAWKA, RODZAJSTATYWU, CZYSPIEWA, REPERTUAR));
+            Generator.getMuzycyLista().add(new Pianista(IMIE, NAZWISKO, POZIOMUMIEJETNOSCI, STAWKA, RODZAJSTATYWU, CZYSPIEWA, REPERTUAR));
             komunikat.setText("Pianista dodany pomyślnie!");
         }
     }

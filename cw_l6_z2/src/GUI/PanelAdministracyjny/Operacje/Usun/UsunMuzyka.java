@@ -1,5 +1,8 @@
 package GUI.PanelAdministracyjny.Operacje.Usun;
 
+import database.TextIO;
+import generator.Generator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,7 +34,7 @@ public class UsunMuzyka implements ActionListener {
 
         String[] nazwyKolumn = {"Identyfikator", "imie", "nazwisko", "stawka", "poziom umiejetnosci"};
 
-        final int n = database.Dane.getMuzycyLista().size(); //TUTAJ
+        final int n = Generator.getMuzycyLista().size(); //TUTAJ
         String[][] dane = new String[n][5];
 
 
@@ -55,15 +58,15 @@ public class UsunMuzyka implements ActionListener {
 
         String[] nazwyKolumn = {"Identyfikator", "imie", "nazwisko", "stawka", "poziom umiejetnosci"};
 
-        final int n = database.Dane.getMuzycyLista().size(); //TUTAJ
+        final int n = Generator.getMuzycyLista().size(); //TUTAJ
         String[][] dane = new String[n][5];
 
         for (int i = 0; i < n; i++) {
             dane[i][0] = ""+(i+1);
-            dane[i][1] = database.Dane.getMuzycyLista().get(i).getImie(); //TUTAJ
-            dane[i][2] = database.Dane.getMuzycyLista().get(i).getNazwisko(); //TUTAJ
-            dane[i][3] = "" + database.Dane.getMuzycyLista().get(i).getStawka(); //TUTAJ
-            dane[i][4] = "" + database.Dane.getMuzycyLista().get(i).getPoziomUmiejetnosci(); //TUTAJ
+            dane[i][1] = Generator.getMuzycyLista().get(i).getImie(); //TUTAJ
+            dane[i][2] = Generator.getMuzycyLista().get(i).getNazwisko(); //TUTAJ
+            dane[i][3] = "" + Generator.getMuzycyLista().get(i).getStawka(); //TUTAJ
+            dane[i][4] = "" + Generator.getMuzycyLista().get(i).getPoziomUmiejetnosci(); //TUTAJ
         }
 
         tabela = new JTable(dane, nazwyKolumn);
@@ -73,7 +76,7 @@ public class UsunMuzyka implements ActionListener {
 
 
         ramka.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        ramka.setSize(550, 600);
+        ramka.setSize(700, 600);
         ramka.setResizable(true);
         ramka.setVisible(true);
         komunikat.setText("");
@@ -84,9 +87,10 @@ public class UsunMuzyka implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             indeks = Integer.parseInt(poleUsun.getText());
 
-            if (indeks<=database.Dane.getMuzycyLista().size() && indeks>0) {
-                database.Dane.getMuzycyLista().remove(indeks - 1);
+            if (indeks<=Generator.getMuzycyLista().size() && indeks>0) {
+                Generator.getMuzycyLista().remove(indeks - 1);
                 komunikat.setText("Muzyk usuniety pomyslnie!");
+                TextIO.TextIO_zapiszDane();
             }
             else
                 komunikat.setText("Nie istnieje taki muzyk!");
