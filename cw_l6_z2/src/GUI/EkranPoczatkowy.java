@@ -25,8 +25,8 @@ public class EkranPoczatkowy {
 	class ReakcjaNaButtonPanelAdministracyjny implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("*panel otwiera sie*");
-			Administracja administracja = new Administracja();
-			administracja.getGUI().PanelAdministracyjny();
+			LogowanieGUI g = new LogowanieGUI();
+			g.logowanie();
 			frame.dispose();
 		}
 	}
