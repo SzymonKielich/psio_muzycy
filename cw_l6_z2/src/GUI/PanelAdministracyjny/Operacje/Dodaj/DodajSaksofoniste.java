@@ -1,5 +1,6 @@
 package GUI.PanelAdministracyjny.Operacje.Dodaj;
 
+import database.TextIO;
 import generator.Generator;
 import muzycy.Saksofonista;
 import repertuar.Piosenka;
@@ -158,8 +159,9 @@ public class DodajSaksofoniste implements JakiMuzyk, ActionListener {
     class PrzyciskDodaj implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Generator.getMuzycyLista().add(new Saksofonista(IMIE, NAZWISKO, POZIOMUMIEJETNOSCI, STAWKA, CZYSIEDZI, REPERTUAR));
+            Generator.getMuzycyLista().add(new Saksofonista(IMIE, NAZWISKO, STAWKA, POZIOMUMIEJETNOSCI, CZYSIEDZI, REPERTUAR));
             komunikat.setText("Saksofonista dodany pomyślnie!");
+            TextIO.TextIO_zapiszDane();
         }
     }
 }
