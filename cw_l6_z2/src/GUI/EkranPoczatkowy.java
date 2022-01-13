@@ -1,5 +1,7 @@
 package GUI;
 
+import GUI.PanelAdministracyjny.Administracja;
+
 import java.awt.*;
 import java.io.File;
 import java.awt.event.ActionEvent;
@@ -20,8 +22,9 @@ public class EkranPoczatkowy {
 
 	class ReakcjaNaButtonPanelAdministracyjny implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			// todo
 			System.out.println("*panel otwiera sie*");
+			Administracja administracja = new Administracja();
+			administracja.getGUI().PanelAdministracyjny();
 		}
 	}
 

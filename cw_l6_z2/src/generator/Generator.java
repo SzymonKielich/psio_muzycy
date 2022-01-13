@@ -49,7 +49,7 @@ public class Generator {
 //		GUI.GUI_Enter_Value();
 
 		Dane.Dane_initializeDatabase();
-	//	TextIO.TextIO_zresetujDane();
+//		TextIO.TextIO_zresetujDane();
 
 		TextIO.TextIO_pobierzDane();
 

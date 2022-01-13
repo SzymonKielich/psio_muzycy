@@ -14,6 +14,7 @@ import sprzet.Mikrofon;
 import technika.Technik;
 import muzycy.*;
 
+import java.util.List;
 import java.util.Random;
 
 import generator.Generator;
@@ -21,6 +22,7 @@ import generator.Generator;
 public class Dane {
 
 	static Muzyk[] muzycy;
+	static List<Muzyk> muzycyLista;
 	static Instrument[] instrument;
 	static Mikrofon[] mikrofony;
 	static Piosenka[] baza;
@@ -130,6 +132,8 @@ public class Dane {
 		muzycy[58] = new Saksofonista("Maksymilian", "Kalinowski", 2, 400, true, Dane_wylosujRepertuar(baza));
 		muzycy[59] = new Saksofonista("Miłosz", "Maciejewski", 3, 500, true, Dane_wylosujRepertuar(baza));
 
+		for (int i=0; i<60; i++)
+			muzycyLista.add(muzycy[i]);
 
 		Dane_initializeInstrument();
 		Dane_initializeMikrofon();
@@ -300,6 +304,10 @@ public class Dane {
 
 	public static Muzyk[] getMuzycy() {
 		return muzycy;
+	}
+
+	public static List<Muzyk> getMuzycyLista() {
+		return muzycyLista;
 	}
 
 	public static void setMuzycy(Muzyk[] muzycy) {
