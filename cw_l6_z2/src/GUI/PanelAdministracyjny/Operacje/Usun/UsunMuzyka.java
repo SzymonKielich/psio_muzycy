@@ -73,7 +73,7 @@ public class UsunMuzyka implements ActionListener {
 
 
         ramka.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        ramka.setSize(600, 600);
+        ramka.setSize(550, 600);
         ramka.setResizable(true);
         ramka.setVisible(true);
         komunikat.setText("");

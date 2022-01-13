@@ -10,6 +10,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class EkranPoczatkowy {
+	private JFrame frame;
+
 	private JButton buttonGenerator;
 	private JButton buttonPanelAdministracyjny;
 
@@ -25,12 +27,13 @@ public class EkranPoczatkowy {
 			System.out.println("*panel otwiera sie*");
 			Administracja administracja = new Administracja();
 			administracja.getGUI().PanelAdministracyjny();
+			frame.dispose();
 		}
 	}
 
 	public EkranPoczatkowy() {
 
-		JFrame frame = new JFrame("Ekran startowy");
+		frame = new JFrame("Ekran startowy");
 		JPanel panel1 = new JPanel();
 		JPanel panel2 = new JPanel();
 		JLabel label = new JLabel("Witaj użytkowniku! :)");

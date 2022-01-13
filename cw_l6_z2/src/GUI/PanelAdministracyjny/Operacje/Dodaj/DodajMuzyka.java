@@ -18,6 +18,10 @@ public class DodajMuzyka implements ActionListener {
 
     private Administracja administracja;
 
+    public JFrame getRamka() {
+        return ramka;
+    }
+
     public DodajMuzyka() {
         ramka = new JFrame("Dodawanie muzyka");
 
@@ -51,6 +55,7 @@ public class DodajMuzyka implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             administracja.setWyborWokalista();
             administracja.getWybor().Dodaj();
+            ramka.dispose();
         }
     }
 
@@ -59,6 +64,7 @@ public class DodajMuzyka implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             administracja.setWyborPianista();
             administracja.getWybor().Dodaj();
+            ramka.dispose();
         }
     }
 
@@ -67,6 +73,7 @@ public class DodajMuzyka implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             administracja.setWyborSaksofonista();
             administracja.getWybor().Dodaj();
+            ramka.dispose();
         }
     }
 

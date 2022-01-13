@@ -48,7 +48,7 @@ public class PokazListeMuzykow implements ActionListener {
 
 
             ramka.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            ramka.setSize(1000, 400);
+            ramka.setSize(550, 400);
             ramka.setResizable(true);
             ramka.setVisible(true);
         }

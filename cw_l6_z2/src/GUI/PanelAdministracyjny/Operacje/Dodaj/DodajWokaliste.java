@@ -68,7 +68,7 @@ public class DodajWokaliste implements JakiMuzyk, ActionListener {
     @Override
     public void Dodaj() {
         ramka.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        ramka.setSize(500, 300);
+        ramka.setSize(550, 400);
         ramka.setResizable(false);
         ramka.setVisible(true);
         ramka.setLayout(new GridLayout(4, 2));
@@ -96,6 +96,7 @@ public class DodajWokaliste implements JakiMuzyk, ActionListener {
         repertuar.addActionListener(new PrzyciskRepertuar());
     }
 
+
     class PrzyciskRepertuar implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -107,6 +108,7 @@ public class DodajWokaliste implements JakiMuzyk, ActionListener {
             SKALAKONIEC = skalaKoniec.getText();
             LICZBAUTWOROW = Integer.parseInt(liczbaUtworow.getText());
 
+            ramka.dispose();
             TworzenieRepertuaru();
         }
 
@@ -136,7 +138,7 @@ public class DodajWokaliste implements JakiMuzyk, ActionListener {
         }
 
         ramka1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        ramka1.setSize(500, 400);
+        ramka1.setSize(550, 400);
         ramka1.setResizable(true);
         ramka1.setVisible(true);
         ramka1.setLayout(new FlowLayout());
