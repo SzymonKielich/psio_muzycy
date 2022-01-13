@@ -14,6 +14,7 @@ import sprzet.Mikrofon;
 import technika.Technik;
 import muzycy.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -22,7 +23,7 @@ import generator.Generator;
 public class Dane {
 
 	static Muzyk[] muzycy;
-	static List<Muzyk> muzycyLista;
+	static List<Muzyk> muzycyLista = new ArrayList();
 	static Instrument[] instrument;
 	static Mikrofon[] mikrofony;
 	static Piosenka[] baza;
