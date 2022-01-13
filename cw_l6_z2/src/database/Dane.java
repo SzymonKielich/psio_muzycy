@@ -13,10 +13,12 @@ import rider.Rider;
 import sprzet.Mikrofon;
 import technika.Technik;
 import muzycy.*;
+import administracja.User;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 
 import generator.Generator;
 
@@ -39,12 +41,21 @@ public class Dane {
 		Dane_initializeMuzycy();
 		Dane_initializeRider();
 		Dane_initializeTechnik();
+		
+		Dane_initializeUzytkownicy();
 
 
 		//hotfix
 		Dane_poprawCeneMuzykow(muzycy);
 
 	}
+	
+	public static void Dane_initializeUzytkownicy()
+	{
+		uzytkownicy.add(new User("mark654","ducks"));
+		uzytkownicy.add(new User("steve754","ducks"));
+		uzytkownicy.add(new User("tom954","ducks"));
+	} 
 
 	public static void Dane_poprawCeneMuzykow(Muzyk[] muzycy) {
 
@@ -337,6 +348,13 @@ public class Dane {
 
 	public static void setBaza(Piosenka[] baza) {
 		Dane.baza = baza;
+	}
+	public static ArrayList<User> getUzytkownicy() {
+		return uzytkownicy;
+	}
+
+	public static void setUzytkownicy(ArrayList<User> uzytkownicy) {
+		Dane.uzytkownicy = uzytkownicy;
 	}
 
 }

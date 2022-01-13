@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import database.Dane;
+import GUI.PanelAdministracyjny.Administracja;
 
 public class LogowanieGUI {
 	
@@ -104,7 +105,8 @@ public class LogowanieGUI {
 					if(Dane.getUzytkownicy().get(i).User_hasloCheck(userPass))
 					{
 						Dane.getUzytkownicy().get(i).User_logowanie();
-						//tutaj kolejne gui
+						Administracja administracja = new Administracja();
+						administracja.getGUI().PanelAdministracyjny();
 						komunikat.setText("poprawne logowanie");
 					}
 					else
