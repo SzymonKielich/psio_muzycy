@@ -18,7 +18,8 @@ public class EkranPoczatkowy {
 	class ReakcjaNaButtonGenerator implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			// todo
-			System.out.println("*generator otwiera sie*");
+			wybor_algorytmu screen = new wybor_algorytmu();
+			screen.GUI();
 		}
 	}
 

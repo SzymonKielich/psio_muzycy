@@ -33,7 +33,7 @@ public class Dane {
 	static Rider bogatszy;
 	static Rider najbogatszy;
 	static Technik[] technicy;
-
+	static ArrayList<User> uzytkownicy = new ArrayList();
 
 	public static void Dane_initializeDatabase() {
 
@@ -52,6 +52,7 @@ public class Dane {
 	
 	public static void Dane_initializeUzytkownicy()
 	{
+		uzytkownicy.add(new User("admin", "admin"));
 		uzytkownicy.add(new User("mark654","ducks"));
 		uzytkownicy.add(new User("steve754","ducks"));
 		uzytkownicy.add(new User("tom954","ducks"));
