@@ -7,10 +7,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import generator.Generator;
 import instrument.Instrument;
 import muzycy.Muzyk;
+import muzycy.Osoba;
 import repertuar.Piosenka;
 import sprzet.Mikrofon;
 import administracja.User;
@@ -41,6 +44,10 @@ public class TextIO {
 		Generator.setInstrument((Instrument[]) TextIO_odczytajZPliku("dbInstrument.txt"));
 		//Dane.setUzytkownicy((ArrayList<User>) TextIO_odczytZPliku("dbUzytkownicy.txt")); <- plik musi zostac stworzony
 
+	}
+	
+	public static List<Object> TextIO_pobierzMuzykow() throws ClassNotFoundException, IOException {
+		return Arrays.asList(TextIO_odczytajZPliku("dbMuzycy.txt"));
 	}
 
 
