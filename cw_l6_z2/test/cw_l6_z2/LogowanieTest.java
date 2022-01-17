@@ -1,3 +1,5 @@
+package cw_l6_z2;
+
 import GUI.LogowanieGUI;
 import administracja.User;
 import database.Dane;
