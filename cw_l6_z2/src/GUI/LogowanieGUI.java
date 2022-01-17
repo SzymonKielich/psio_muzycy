@@ -23,7 +23,18 @@ public class LogowanieGUI {
 	private JTextField login;
 	private JPasswordField haslo;
 	private JButton zaloguj;
-	
+
+	public String getLogin() {
+		return login.getText();
+	}
+
+	public String getHaslo() {
+		return new String(haslo.getPassword());
+	}
+
+	public String getKomunikat() {
+		return komunikat.getText();
+	}
 	
 	public LogowanieGUI()
 	{
@@ -87,39 +98,42 @@ public class LogowanieGUI {
 		
 		
 	}
+
+	public void procesLogowania() {
+		String userLogin = getLogin();
+		String userPass = getHaslo();
+		boolean flag = true;
+
+		for(int i=0; i<Dane.getUzytkownicy().size() ;i++)
+		{
+			if(Dane.getUzytkownicy().get(i).getLogin().equals(userLogin))
+			{
+				flag=false;
+				if(Dane.getUzytkownicy().get(i).User_hasloCheck(userPass))
+				{
+					Dane.getUzytkownicy().get(i).User_logowanie();
+					Administracja administracja = new Administracja();
+					administracja.getGUI().PanelAdministracyjny();
+					komunikat.setText("poprawne logowanie");
+				}
+				else
+				{
+					komunikat.setText("Nieprawidlowe haslo dla "+userLogin);
+				}
+			}
+		}
+		if(flag)
+		{
+			komunikat.setText("Uzytkownik "+userLogin+" nie jest zarejestrowany!");
+		}
+	}
 	
-	class ButtonListener implements ActionListener
+	public class ButtonListener implements ActionListener
 	{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String userLogin = login.getText();
-			String userPass = new String(haslo.getPassword());
-			boolean flag = true;
-			
-			for(int i=0; i<Dane.getUzytkownicy().size() ;i++)
-			{
-				if(Dane.getUzytkownicy().get(i).getLogin().equals(userLogin))
-				{
-					flag=false;
-					if(Dane.getUzytkownicy().get(i).User_hasloCheck(userPass))
-					{
-						Dane.getUzytkownicy().get(i).User_logowanie();
-						Administracja administracja = new Administracja();
-						administracja.getGUI().PanelAdministracyjny();
-						komunikat.setText("poprawne logowanie");
-					}
-					else
-					{
-						komunikat.setText("Nieprawidlowe haslo dla "+userLogin);
-					}
-				}
-			}
-			if(flag)
-			{
-				komunikat.setText("Uzytkownik "+userLogin+" nie jest zarejestrowany!");
-			}
-			
+			procesLogowania();
 		}
 		
 	}

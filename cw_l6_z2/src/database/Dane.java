@@ -25,7 +25,7 @@ import generator.Generator;
 public class Dane {
 
 	static Muzyk[] muzycy;
-	static List<Muzyk> muzycyLista = new ArrayList();
+	static List<Muzyk> muzycyLista = new ArrayList<>();
 	static Instrument[] instrument;
 	static Mikrofon[] mikrofony;
 	static Piosenka[] baza;
@@ -33,7 +33,7 @@ public class Dane {
 	static Rider bogatszy;
 	static Rider najbogatszy;
 	static Technik[] technicy;
-	static ArrayList<User> uzytkownicy = new ArrayList();
+	static ArrayList<User> uzytkownicy = new ArrayList<>();
 
 	public static void Dane_initializeDatabase() {
 
