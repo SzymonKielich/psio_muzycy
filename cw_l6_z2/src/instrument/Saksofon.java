@@ -37,6 +37,11 @@ public class Saksofon extends Instrument {
         return "Producent: " + getProducent() + "\tCena: " + getCena() + "\tRok produkcji: " + getRokProdukcji()
                 + "\tRodzaj: " + getRodzaj() + "\tStrój muzyczny: " + getStrojMuzyczny();
     }
+    
+    @Override
+    public String toString() {
+    	return this.getStringSaksofon();
+    }
 
 
 }

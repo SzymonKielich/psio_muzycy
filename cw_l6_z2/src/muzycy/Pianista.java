@@ -60,5 +60,10 @@ public class Pianista extends Muzyk {
 		this.keyboard = keyboard;
 	}
 
+	public Keyboard getKeyboard() {
+		return keyboard;
+	}
+	
+
 
 }

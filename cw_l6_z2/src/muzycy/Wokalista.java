@@ -66,4 +66,13 @@ public class Wokalista extends Muzyk {
 		this.skalaKoniec = skalaKoniec;
 	}
 
+	public Mikrofon getMikro() {
+		return mikro;
+	}
+
+	public void setMikro(Mikrofon mikro) {
+		this.mikro = mikro;
+	}
+	
+
 }
