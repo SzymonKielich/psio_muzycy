@@ -63,7 +63,7 @@ public class EkranPoczatkowy {
 		panel2.setPreferredSize(new Dimension(640, 360));
 
 		try {
-			Image img = ImageIO.read(getClass().getResource("generatorIcon.jpg"));
+			Image img = ImageIO.read(getClass().getClassLoader().getResource("generatorIcon.jpg"));
 			Image mniejszy = img.getScaledInstance(180, 200, java.awt.Image.SCALE_SMOOTH);
 			buttonGenerator.setIcon(new ImageIcon(mniejszy));
 
@@ -77,7 +77,7 @@ public class EkranPoczatkowy {
 		buttonGenerator.setHorizontalTextPosition(SwingConstants.CENTER);
 
 		try {
-			Image img = ImageIO.read(getClass().getResource("administratorIcon.jpg"));
+			Image img = ImageIO.read(getClass().getClassLoader().getResource("administratorIcon.jpg"));
 			Image mniejszy = img.getScaledInstance(180, 200, java.awt.Image.SCALE_SMOOTH);
 			buttonPanelAdministracyjny.setIcon(new ImageIcon(mniejszy));
 
