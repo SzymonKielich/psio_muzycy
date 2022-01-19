@@ -64,7 +64,7 @@ public class wybor_algorytmu {
         }
 
         public void actionPerformed(ActionEvent e){
-
+            wyswietlanie obj = new wyswietlanie();
             String input = (inputField.getText());
 
             try {
@@ -83,7 +83,7 @@ public class wybor_algorytmu {
                                     Generator.getKwota()+"\nWybrano : " + temp.getText());
                             Generator.setWyborAlgorytmu(new AlgorytmDynamiczny());
                             Generator.idk(Generator.getWyborAlgorytmu());
-                            wyswietlanie.wyswietlanie(Zespol.getZespol());
+                            obj.wyswietlanieZespolu(Zespol.getZespol());
                         }
                         else
                         {
@@ -92,7 +92,7 @@ public class wybor_algorytmu {
                             Generator.setWyborAlgorytmu(new AlgorytmDynamiczny());
                             Generator.idk(Generator.getWyborAlgorytmu());
                             frame.dispose();
-                            wyswietlanie.wyswietlanie(Zespol.getZespol());
+                            obj.wyswietlanieZespolu(Zespol.getZespol());
                         }
                     }
                 }} catch (WyjatekNiepoprawnyBudzet wnb) {
@@ -179,7 +179,7 @@ public class wybor_algorytmu {
 //        checkbox1.addActionListener(new Checkbox1(frame));
 //        checkbox2.addActionListener(new Checkbox2(frame));
 
-        label.setFont(new Font("DialogInput",Font.BOLD,14));
+        label.setFont(new Font("DialogInput",Font.BOLD,15));
         radiobutton2.setFont(new Font("DialogInput",Font.BOLD,15));
         radiobutton1.setFont(new Font("DialogInput",Font.BOLD,15));
         submitButton.setFont(new Font("DialogInput",Font.BOLD,15));
@@ -191,7 +191,7 @@ public class wybor_algorytmu {
         submitButton.setSize(100,50);
 
         inputField.setBounds(150,60,330,30);
-        label.setBounds(120,120,400,30);
+        label.setBounds(120,120,500,30);
 
         radiobutton1.setBounds(120,175,200,30);
         radiobutton2.setBounds(320,175,200,30);
