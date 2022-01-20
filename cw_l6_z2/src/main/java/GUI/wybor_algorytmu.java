@@ -64,14 +64,14 @@ public class wybor_algorytmu {
         }
 
         public void actionPerformed(ActionEvent e){
-
+            wyswietlanie obj = new wyswietlanie();
             String input = (inputField.getText());
-            System.out.println("Wpisano kwotę " + input);
-            Generator.setKwota(Integer.parseInt(input.toString()));
-            System.out.println("Ustawiono kwotę na: " + Generator.getKwota());
 
             try {
-                validateKwota(Generator.getKwota());
+                validateKwota(input);
+                System.out.println("Wpisano kwotę " + input);
+                System.out.println("Ustawiono kwotę na: " + Generator.getKwota());
+
                 Enumeration<AbstractButton> allRadioButton=buttonGroup.getElements();
                 while(allRadioButton.hasMoreElements())
                 {
@@ -83,8 +83,7 @@ public class wybor_algorytmu {
                                     Generator.getKwota()+"\nWybrano : " + temp.getText());
                             Generator.setWyborAlgorytmu(new AlgorytmDynamiczny());
                             Generator.idk(Generator.getWyborAlgorytmu());
-                            //wyswietlanie.Wyswietlenie_brief(Generator.getParametersGUI());
-                            wyswietlanie.wyswietlanie2(Zespol.getZespol());
+                            obj.wyswietlanieZespolu(Zespol.getZespol());
                         }
                         else
                         {
@@ -93,14 +92,18 @@ public class wybor_algorytmu {
                             Generator.setWyborAlgorytmu(new AlgorytmDynamiczny());
                             Generator.idk(Generator.getWyborAlgorytmu());
                             frame.dispose();
-                            //wyswietlanie.Wyswietlenie_brief(Generator.getParametersGUI());
-                            wyswietlanie.wyswietlanie2(Zespol.getZespol());
+                            obj.wyswietlanieZespolu(Zespol.getZespol());
                         }
                     }
-                }
-            } catch (WyjatekNiepoprawnyBudzet wnb) {
-                wybor_algorytmu.getLabel().setText("Kwota musi być wielokrotnością 100!");
+                }} catch (WyjatekNiepoprawnyBudzet wnb) {
+                wybor_algorytmu.getLabel().setText("Kwota musi być dodatnią wielokrotnością 100");
             }
+            catch (NumberFormatException ex){
+                wybor_algorytmu.getLabel().setText("Wprowadzone dane są niepoprawne");
+            }
+
+
+
 
 
         }
@@ -119,8 +122,7 @@ public class wybor_algorytmu {
 
         public void actionPerformed(ActionEvent e)
         {
-            //tu bedzie ten panel poprzedni sie wyswietlac to ez sie ogarnie ale na razie nie ma na gicie
-        }
+            frame.dispose();        }
     }
 
     public static void GUI(){
@@ -189,7 +191,7 @@ public class wybor_algorytmu {
         submitButton.setSize(100,50);
 
         inputField.setBounds(150,60,330,30);
-        label.setBounds(200,120,400,30);
+        label.setBounds(120,120,500,30);
 
         radiobutton1.setBounds(120,175,200,30);
         radiobutton2.setBounds(320,175,200,30);
@@ -281,13 +283,15 @@ public class wybor_algorytmu {
 		wybor_algorytmu.label = label;
 	}
 
-    public static boolean validateKwota(int Kwota) throws WyjatekNiepoprawnyBudzet {
-    	
-    	if(Kwota % 100 != 0) {
+    public static boolean validateKwota(String Kwota) throws WyjatekNiepoprawnyBudzet, NumberFormatException {
+    	int budzet = Integer.parseInt(Kwota);
+
+        if(budzet % 100 != 0 ||budzet <0) {
     		throw new WyjatekNiepoprawnyBudzet();
     	}
-    	
-    	return true;
+        Generator.setKwota(budzet);
+        return true;
+
     }
     
     
