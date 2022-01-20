@@ -19,7 +19,11 @@ public class Saksofonista extends Muzyk {
 
     // GETTERS & SETTERS
 
-    public boolean isCzySiedzi() {
+    public Saksofonista() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public boolean isCzySiedzi() {
         return czySiedzi;
     }
 

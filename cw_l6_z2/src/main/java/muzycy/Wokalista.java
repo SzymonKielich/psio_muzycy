@@ -18,6 +18,10 @@ public class Wokalista extends Muzyk {
 
 	}
 
+	public Wokalista() {
+		// TODO Auto-generated constructor stub
+	}
+
 	//metoda przyslonieta z klasy muzyk
 	public void Muzyk_play(Wokalista wokalista) {
 
