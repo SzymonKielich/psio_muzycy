@@ -77,6 +77,7 @@ public class CzyKazdyMuzykMaWszystkieKryteria {
 		
 		for(int i = 0; i < muzycy.size(); i++) {
 			
+			//wybieramy odpowiednią "klasę" z której będziemy brać metodę w zależności od tego, jakiej instancji klasy jest nasz obiekt
 			if(muzycy.get(i) instanceof Wokalista) {
 				c = Wokalista.class;
 			} else if (muzycy.get(i) instanceof Saksofonista) {
@@ -99,6 +100,8 @@ public class CzyKazdyMuzykMaWszystkieKryteria {
 				temp = c;
 				
 				System.out.println(requiredFields.get(j));
+				
+				//dopóki nie znajdziemy metody w naszej klasie, będziemy przełączać się klasę wyżej
 				while(method == null) {
 					
 					try {
@@ -118,7 +121,10 @@ public class CzyKazdyMuzykMaWszystkieKryteria {
 				
 				System.out.println(method.invoke(muzycy.get(i)));
 				assertNotNull(method.invoke(muzycy.get(i)));
+				
+				//wyzerowanie obiektu metody
 				method = null;
+				
 //				assertFalse(method.invoke(muzycy.get(i).toString() == "0"));
 
 			}
@@ -146,14 +152,13 @@ public class CzyKazdyMuzykMaWszystkieKryteria {
     	ArrayList<String> result = new ArrayList<String>();
     	ArrayList requiredFields = new ArrayList();
     	
-
-    		requiredFields = new ArrayList(Arrays.asList(muzycy.Osoba.class.getDeclaredFields()));
+    	//wszystkie typy dziedziczą po osobie, zatem posiadają jej pola
+    	requiredFields = new ArrayList(Arrays.asList(muzycy.Osoba.class.getDeclaredFields()));
  
-//		System.out.println(c.getSimpleName() + " simple name");
-
+    	//dodajemy pola klasy przekazanej w parametrze metody
 		requiredFields.addAll(Arrays.asList(c.getDeclaredFields()));
 		
- //   	System.out.println("wymagane pole: " + requiredFields);
+
     	String field = null;
     	
     	
@@ -163,9 +168,9 @@ public class CzyKazdyMuzykMaWszystkieKryteria {
 			
 			
 			//pełna nazwa zawarta w arrayliście zawiera pakiet, typ zmiennej. rozdziel stringa i uzyskaj tylko końcową informację o zmiennej
-//			System.out.println(requiredFields.get(i));
 			
 			if(requiredFields.get(i).toString().contains("serialVersionUID")) {
+				//nie interesuje nas zmienna zawierająca svuid, idz do następnej iteracji
 				continue;
 			}
 			
